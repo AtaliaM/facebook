@@ -1,0 +1,51 @@
+body {
+    background-color: #f0f2f5;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+}
+
+h2 {
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 100px auto;
+}
+
+.box {
+    width: 50%;
+}
+
+input {
+    border: 1px solid grey;
+    padding: 14px 16px;
+    width: 330px;
+    margin: 5px;
+}
+
+.logInBtn {
+    background-color: #166FE5;
+    color: white;
+    border-radius: 6px;
+}
+
+.newAccountBtn {
+    background-color: #36A420;
+    color: white;
+    border-radius: 6px;
+}
+
+a {
+    font-size: 0.5em;
+}
+
+form {
+    background-color: white;
+    padding: 20px 0 28px;
+    margin: 40px 0 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+}
