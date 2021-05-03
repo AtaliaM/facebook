@@ -9,6 +9,10 @@ class Login extends React.Component {
         document.getElementById("myForm").style.display = "block";
     }
 
+    closeForm = () => {
+        document.getElementById("myForm").style.display = "none";
+    }
+
     render() {
         return (
             <div className="container">
@@ -28,22 +32,26 @@ class Login extends React.Component {
                         <a href="/">Forgot Password?</a>
                         <br></br>
                         <div>
-                            <input className="btn newAccountBtn" value="Create New Account" onClick={()=>this.openForm()} />
+                            <input className="btn newAccountBtn" value="Create New Account" onClick={() => this.openForm()} />
                         </div>
                     </form>
                 </div>
-                <div class="form-popup" id="myForm">
-                    <form action="/action_page.php" class="form-container">
-                        <h1>Login</h1>
+                <div className="form-popup" id="myForm">
+                    <form action="/action_page.php" className="form-container">
+                        <h1>Sign Up</h1>
+                        <h4>It's quick and easy</h4>
 
-                        <label for="email"><b>Email</b></label>
-                        <input type="text" placeholder="Enter Email" name="email" required />
+                        <input type="text" placeholder="first name" name="fname" required />
+                        <input type="text" placeholder="last name" name="lname" required />
 
-                        <label for="psw"><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="psw" required />
+                        <input type="email" placeholder="Mobile number or email" name="psw" required />
+                        <input type="password" placeholder="New Password" name="psw" required />
 
-                        <button type="submit" class="btn">Login</button>
-                        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                        <p>Birthday</p>
+                        <input type="date" id="birthday" name="birthday"/>
+
+                        <button type="submit" class="btn">Sign Up</button>
+                        <button type="button" class="btn cancel" onClick={()=>this.closeForm()}>Close</button>
                     </form>
                 </div>
             </div>
