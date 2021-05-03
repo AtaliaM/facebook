@@ -4,6 +4,11 @@ import '../style/Login.css';
 
 class Login extends React.Component {
 
+    openForm = () => {
+
+        document.getElementById("myForm").style.display = "block";
+    }
+
     render() {
         return (
             <div className="container">
@@ -18,13 +23,27 @@ class Login extends React.Component {
                         <input type="text" id="email" placeholder="Email or Phone Number" />
                         <input type="text" id="password" placeholder="Password" />
                         <div>
-                            <input type="submit" className="logInBtn" value="Submit" />
+                            <input className="btn logInBtn" value="Submit" />
                         </div>
                         <a href="/">Forgot Password?</a>
                         <br></br>
                         <div>
-                            <input type="submit" className="newAccountBtn" value="Create New Account" />
+                            <input className="btn newAccountBtn" value="Create New Account" onClick={()=>this.openForm()} />
                         </div>
+                    </form>
+                </div>
+                <div class="form-popup" id="myForm">
+                    <form action="/action_page.php" class="form-container">
+                        <h1>Login</h1>
+
+                        <label for="email"><b>Email</b></label>
+                        <input type="text" placeholder="Enter Email" name="email" required />
+
+                        <label for="psw"><b>Password</b></label>
+                        <input type="password" placeholder="Enter Password" name="psw" required />
+
+                        <button type="submit" class="btn">Login</button>
+                        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
                     </form>
                 </div>
             </div>
