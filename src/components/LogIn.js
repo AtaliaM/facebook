@@ -39,7 +39,6 @@ class Login extends React.Component {
                 <div className="form-popup" id="myForm">
                     <form action="/action_page.php" className="form-container">
                         <h1>Sign Up</h1>
-                        <h4>It's quick and easy</h4>
 
                         <input type="text" placeholder="first name" name="fname" required />
                         <input type="text" placeholder="last name" name="lname" required />
@@ -47,7 +46,7 @@ class Login extends React.Component {
                         <input type="email" placeholder="Mobile number or email" name="psw" required />
                         <input type="password" placeholder="New Password" name="psw" required />
 
-                        <p>Birthday</p>
+                        <label>Birthday</label>
                         <input type="date" id="birthday" name="birthday"/>
 
                         <button type="submit" class="btn">Sign Up</button>
