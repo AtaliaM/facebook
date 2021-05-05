@@ -1,0 +1,25 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #dddddd;
+    position: sticky;
+    display: flex;
+  }
+
+
+  li {
+    display: inline;
+  }
+
+  a {
+    padding: 8px;
+    background-color: #dddddd;
+    font-size: 1em;
+    padding: 0 10px;
+  }
+
+  img {
+      float: right;
+      width: 30px;
+  }
