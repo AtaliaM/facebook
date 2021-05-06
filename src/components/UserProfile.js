@@ -1,6 +1,7 @@
 import React from 'react';
 import  UserNavBar from './UserNavBar';
 import UserHeader from './UserHeader';
+import UserWall from './UserWall';
 
 
 const UserProfile = () => {
@@ -9,6 +10,7 @@ const UserProfile = () => {
         <div>
             <UserNavBar/>
             <UserHeader/>
+            <UserWall/>
         </div>
     )
 

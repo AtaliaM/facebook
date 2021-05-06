@@ -1,0 +1,8 @@
+.wall-container {
+    display: flex;
+    height: calc(100vh - 100px);
+    background-color: lightcoral;
+}
+
+.wall {
+}
