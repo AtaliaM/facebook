@@ -1,25 +1,25 @@
 ul {
+  height: 4vh;
     list-style-type: none;
     margin: 0;
     padding: 0;
     background-color: #dddddd;
     position: sticky;
-    display: flex;
+    /* display: flex; */
   }
 
 
   li {
     display: inline;
+    padding: 10px;
   }
 
   ul > li > a {
-    padding: 8px;
     background-color: #dddddd;
     font-size: 1em;
-    padding: 0 10px;
   }
 
   img {
       float: right;
-      width: 25px;
+      width: 35px;
   }
