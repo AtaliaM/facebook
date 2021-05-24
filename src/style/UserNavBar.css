@@ -27,3 +27,11 @@ ul {
       float: right;
       width: 35px;
   }
+
+  @media only screen and (max-width: 768px) {
+    ul {
+      height: fit-content;
+      flex-direction: column;
+    }
+
+  }

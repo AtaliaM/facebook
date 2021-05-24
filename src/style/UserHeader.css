@@ -66,6 +66,8 @@ i {
         margin: 0 auto;
     }
     .user-image {
+        height: 200px;
+        width: 200px;
         align-self: unset;
         margin: 0 auto;
     }
