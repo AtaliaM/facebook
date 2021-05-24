@@ -22,7 +22,7 @@
     box-sizing:content-box;
     height: 400px;
     width: 190px;
-    background-color: var(--main-btn-color);
+    background-color: var(--secondary-color);
     border-radius: 50%;
     align-self: flex-end;
     margin: 10px 10px;
@@ -40,9 +40,18 @@ button {
 
 .user-pic-icon {
     border-radius: 50px;
-    border: 1px solid gray;
+    background: var(--main-btn-color);
+    border: 1px solid transparent;
     margin: 5px 0;
+    transition: color 0.5s;
 }
+
+.user-pic-icon:hover {
+    color: var(--main-color);
+    /* background: var(--header-color); */
+    cursor: pointer;
+}
+
 .user-header-pic-icon {
     width: 250px;
     height: 60px;
@@ -50,6 +59,12 @@ button {
     border: 0px;
     margin: 5px 5px;
     background-color: var(--main-btn-color);
+    transition: color 0.7s;
+}
+
+.user-header-pic-icon:hover {
+    color: var(--main-color);
+    cursor: pointer;
 }
 
 i {

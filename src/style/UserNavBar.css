@@ -21,6 +21,7 @@ ul {
     font-size: 1em;
     color: var(--font-color);
     margin: 10px;
+    transition: color 0.4s;
   }
 
   img {
