@@ -1,7 +1,7 @@
 .wall-container {
     display: flex;
     height: calc(100vh - 100px);
-    background-color: lightcoral;
+    background-color: var(--main-bg-color);
 }
 
 .wall {
