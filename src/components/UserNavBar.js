@@ -6,9 +6,9 @@ const UserNavBar = () => {
 
     return (
         <ul>
-            <li><a href="/">Home <i class="fas fa-home"></i></a></li>
-            <li><a href="/">Profile <i class="fas fa-user-alt"></i></a></li>
-            <li><a href="/">Messages <i class="far fa-envelope"></i></a></li>
+            <li><a href="/">Home <i className="fas fa-home"></i></a></li>
+            <li><a href="/">Profile <i className="fas fa-user-alt"></i></a></li>
+            <li><a href="/">Messages <i className="far fa-envelope"></i></a></li>
             {/* <img src={icon} alt="icon"></img> */}
         </ul>
     )
