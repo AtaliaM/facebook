@@ -18,7 +18,7 @@ class Login extends React.Component {
             <div className="container">
                 <div className="box">
                     <div>
-                        <img src={logo} alt="logo" style={{ width: "300px" }}></img>
+                        <img src={logo} className="logo-picture" alt="logo"></img>
                         <h2>Connect with friends and the world around you on Facebook.</h2>
                     </div>
                 </div>

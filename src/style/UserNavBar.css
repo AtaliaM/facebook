@@ -24,10 +24,10 @@ ul {
     transition: color 0.4s;
   }
 
-  img {
+  /* img {
       float: right;
       width: 35px;
-  }
+  } */
 
   @media only screen and (max-width: 768px) {
     ul {

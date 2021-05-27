@@ -1,6 +1,6 @@
 import React from 'react';
 import '../style/UserNavBar.css';
-import icon from '../pictures/icon.png';
+// import icon from '../pictures/icon.png';
 
 const UserNavBar = () => {
 
