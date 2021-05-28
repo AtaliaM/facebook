@@ -1,6 +1,6 @@
 import axios from 'axios';
 
 export default axios.create({
-    baseURL: `https://atalia-facebook-api.herokuapp.com`,
-    
+    baseURL:  `https://atalia-facebook-api.herokuapp.com`,
   });
+

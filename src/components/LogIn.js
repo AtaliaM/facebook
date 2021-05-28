@@ -24,15 +24,15 @@ class Login extends React.Component {
                 </div>
                 <div className="box">
                     <form className="form">
-                        <input type="text" id="email" placeholder="Email or Phone Number" />
+                        <input type="text" id="email" placeholder="Email" />
                         <input type="text" id="password" placeholder="Password" />
                         <div>
-                            <input className="btn logInBtn" value="Submit" />
+                            <input className="btn logInBtn" defaultValue="Submit" />
                         </div>
                         <a href="/">Forgot Password?</a>
                         <br></br>
                         <div>
-                            <input className="btn newAccountBtn" value="Create New Account" onClick={() => this.openForm()} />
+                            <input className="btn newAccountBtn" defaultValue="Create New Account" onClick={() => this.openForm()} />
                         </div>
                     </form>
                 </div>
@@ -43,14 +43,14 @@ class Login extends React.Component {
                         <input type="text" placeholder="first name" name="fname" required />
                         <input type="text" placeholder="last name" name="lname" required />
 
-                        <input type="email" placeholder="Mobile number or email" name="psw" required />
+                        <input type="email" placeholder="email" name="email" required />
                         <input type="password" placeholder="New Password" name="psw" required />
 
                         <label>Birthday</label>
                         <input type="date" id="birthday" name="birthday"/>
 
-                        <button type="submit" class="btn">Sign Up</button>
-                        <button type="button" class="btn cancel" onClick={()=>this.closeForm()}>Close</button>
+                        <button type="submit" className="btn">Sign Up</button>
+                        <button type="button" className="btn cancel" onClick={()=>this.closeForm()}>Close</button>
                     </form>
                 </div>
             </div>
