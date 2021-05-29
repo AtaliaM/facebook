@@ -44,6 +44,12 @@ input {
     border-radius: 6px;
     box-sizing: content-box;
     text-align: center;
+    border: 1px solid rgb(192, 185, 185);
+    border-radius: 6px;
+    padding: 14px 16px;
+    width: 330px;
+    margin: 5px 10px;
+    box-sizing: content-box;
 }
 
 .logInBtn {
@@ -54,7 +60,6 @@ input {
     cursor: pointer;
     background-color: #1670e5de;
 }
-
 
 .newAccountBtn {
     background-color: #36A420;
@@ -100,7 +105,7 @@ label {
     z-index: 9;
   }
   
-  /* Add styles to the form container */
+  /* form container */
   .form-container {
     max-width: 440px;
     padding: 10px;
@@ -134,7 +139,7 @@ label {
     opacity: 0.8;
   }
   
-  /* Add a red background color to the cancel button */
+  /* cancel button */
   .form-container .cancel {
     background-color: red;
   }
