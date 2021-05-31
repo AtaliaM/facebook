@@ -4,6 +4,8 @@ import '../style/UserWall.css'
 
 const UserWall = () => {
 
+    //user's posts will be fetached and displayed here//
+
     return (
 
         <div className="wall-container">
