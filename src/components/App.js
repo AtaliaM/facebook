@@ -1,25 +1,27 @@
 import '../style/App.css';
+import { BrowserRouter, Route } from 'react-router-dom';
 import Login from './LogIn';
-// import UserProfile from './UserProfile';
-
-import facebookApi from '../apis/facebook-api'
+import UserProfile from './UserProfile';
+import facebookApi from '../apis/facebook-api';
 
 function App() {
 
+  // const trial = async() => {
 
-  const trial = async() => {
-
-    console.log(process.env.NODE_ENV);
-    const res = await facebookApi.get('/users');
-    console.log(res);
-  }
-  trial();
+  //   console.log(process.env.NODE_ENV);
+  //   const res = await facebookApi.get('/users');
+  //   console.log(res);
+  // }
+  // trial();
 
 
   return (
     <div className="App">
-      <Login />
-      {/* <UserProfile/> */}
+      <BrowserRouter>
+        <Route path="/" exact component={Login} />
+        <Route path="/myProfile" component={UserProfile}/>
+
+      </BrowserRouter>
     </div>
   );
 }

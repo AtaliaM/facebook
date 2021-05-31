@@ -2,6 +2,7 @@ import React from 'react';
 import logo from '../pictures/logo.svg';
 import '../style/Login.css';
 import facebookApi from '../apis/facebook-api';
+import Cookies from 'universal-cookie';
 
 class Login extends React.Component {
 
@@ -15,24 +16,39 @@ class Login extends React.Component {
         document.getElementById("myForm").style.display = "none";
     }
 
-    logInUser = async(event) => {
+    logInUser = async (event) => {
         event.preventDefault();
         console.log("login")
-        console.log(this.state.email, this.state.password)
-        const reqBody = {email: this.state.email, password: this.state.password};
+        const reqBody = { email: this.state.email, password: this.state.password };
 
         try {
             const response = await facebookApi.post("/users/login", reqBody);
-            console.log(response);
             // this.setState({user:response.data.user});
-        } catch(e) {
+            //setting new token cookie for the user who just logged in//
+            const cookies = new Cookies();
+            cookies.set('userToken', response.data.token);
+            this.props.history.push('/myProfile');
+        } catch (e) {
             console.log(e);
         }
     }
 
-    registerUser = async(event) => {
+    registerUser = async (event) => {
         event.preventDefault();
-        console.log("register")
+        console.log("register");
+
+        const reqBody = {firstName:this.state.fname, lastName:this.state.lname, 
+            email: this.state.email, password: this.state.password };
+
+            try {
+                const response = await facebookApi.post("/users", reqBody);
+                //setting new token cookie for the user who just registered//
+                const cookies = new Cookies();
+                cookies.set('userToken', response.data.token);
+                this.props.history.push('/myProfile');
+            } catch (e) {
+                console.log(e);
+            }
     }
 
     render() {
@@ -69,7 +85,7 @@ class Login extends React.Component {
                         <input type="text" placeholder="last name" name="lname" required onChange={(e) => this.setState({ lname: e.target.value })} />
 
                         <input type="email" placeholder="email" name="email" required onChange={(e) => this.setState({ email: e.target.value })} />
-                        <input type="password" placeholder="New Password" name="psw" minLength="7" required onChange={(e) => this.setState({ password: e.target.value })}/>
+                        <input type="password" placeholder="New Password" name="psw" minLength="7" required onChange={(e) => this.setState({ password: e.target.value })} />
 
                         {/* <label>Birthday</label>
                         <input type="date" id="birthday" name="birthday"/> */}
