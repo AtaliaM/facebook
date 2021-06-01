@@ -4,6 +4,8 @@ import '../style/Login.css';
 import facebookApi from '../apis/facebook-api';
 import Cookies from 'universal-cookie';
 
+//need to save user's details after he logged in - either in redux or in cookies//
+
 class Login extends React.Component {
 
     state = { fname: "", lname: "", email: "", password: "", birthday: "" };

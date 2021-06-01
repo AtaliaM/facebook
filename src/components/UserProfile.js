@@ -19,6 +19,8 @@ class UserProfile extends React.Component {
         }
     }
 
+    //need to pass the user's details to the following components//
+
     render() {
         return (
             <div>
