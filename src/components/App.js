@@ -2,7 +2,7 @@ import '../style/App.css';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Login from './LogIn';
 import UserProfile from './UserProfile';
-import facebookApi from '../apis/facebook-api';
+// import facebookApi from '../apis/facebook-api';
 
 function App() {
 
