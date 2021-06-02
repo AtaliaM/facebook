@@ -19,7 +19,7 @@ class UserWall extends React.Component {
             });
             if (res) {
                 console.log(res)
-                this.setState({ userPosts: res.data })
+                this.setState({ userPosts: res.data.reverse() })
             }
 
         } catch (e) {
@@ -44,6 +44,9 @@ class UserWall extends React.Component {
                             <span className="left floated like">
                                 <i className="like icon"></i>
                                     Like</span>
+                            <span >
+                                <i className="comment icon"></i>
+                                    Comments</span>
                             <span className="right floated star">
                                 <i className="star icon"></i>
                                     Favorite</span>
@@ -58,13 +61,13 @@ class UserWall extends React.Component {
         return (
             this.state.userPosts.length !== 0 ?
                 <div className="wall-container">
-                <AddNewPost/>
+                    <AddNewPost />
                     <div className="postsContainer">
                         {this.renderUserPosts()}
                     </div>
                 </div> :
                 <div>
-                <AddNewPost/>
+                    <AddNewPost />
                 You don't have any posts yet..</div>
         )
 
