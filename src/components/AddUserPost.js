@@ -26,7 +26,7 @@ class AddUserPost extends React.Component {
                 headers: { Authorization: "Bearer " + userToken }
             })
             document.getElementById("myForm").style.display = "none";
-            window.location.replace('/myProfile');
+            this.props.history.push("/myProfile");
         } catch(e) {
             console.log(e);
         }
