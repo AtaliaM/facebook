@@ -2,6 +2,7 @@ import React from 'react';
 import '../style/UserWall.css'
 import facebookApi from '../apis/facebook-api';
 import Cookies from 'universal-cookie';
+import AddNewPost from './AddUserPost';
 
 
 class UserWall extends React.Component {
@@ -30,24 +31,21 @@ class UserWall extends React.Component {
         return (
             this.state.userPosts.map((post) => {
                 return (
-                    // <div className="singlePostContainer">
-                    //     <div>{post.postBody}</div>
-                    // </div>
-                    <div class="ui card">
-                        <div class="content">
-                            <i class="right floated like icon"></i>
-                            <i class="right floated star icon"></i>
-                            <div class="header">Post header</div>
-                            <div class="description">
-                                <p>{post.postBody}</p>
+                    <div className="ui card" key={post._id}>
+                        <div className="content">
+                            <i className="right floated like icon"></i>
+                            <i className="right floated star icon"></i>
+                            {post.postHeader ? <h3 className="postHeader">{post.postHeader}</h3> : null}
+                            <div className="description">
+                                <p className="postBody">{post.postBody}</p>
                             </div>
                         </div>
-                        <div class="extra content">
-                            <span class="left floated like">
-                                <i class="like icon"></i>
+                        <div className="extra content">
+                            <span className="left floated like">
+                                <i className="like icon"></i>
                                     Like</span>
-                            <span class="right floated star">
-                                <i class="star icon"></i>
+                            <span className="right floated star">
+                                <i className="star icon"></i>
                                     Favorite</span>
                         </div>
                     </div>
@@ -60,11 +58,14 @@ class UserWall extends React.Component {
         return (
             this.state.userPosts.length !== 0 ?
                 <div className="wall-container">
+                <AddNewPost/>
                     <div className="postsContainer">
                         {this.renderUserPosts()}
                     </div>
                 </div> :
-                <div>You don't have any posts yet..</div>
+                <div>
+                <AddNewPost/>
+                You don't have any posts yet..</div>
         )
 
     }

@@ -1,5 +1,4 @@
 
-
 .wall-container {
     display: flex;
     justify-content: center;
@@ -15,4 +14,23 @@
 
 .singlePostContainer {
     color: var(--secondary-font-color);
+}
+
+.postHeader {
+    margin: 0px 0px 10px 0px;
+    color: var(--header-color);
+}
+
+.postBody {
+    font-size: 16px;
+}
+
+.ui.card, .ui.card>.card {
+    width: 40vw;
+}
+
+@media only screen and (max-width: 768px) {
+    .ui.card, .ui.card>.card {
+        min-width: 290px;
+    }
 }
