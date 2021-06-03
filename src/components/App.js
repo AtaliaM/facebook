@@ -1,7 +1,9 @@
 import '../style/App.css';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Login from './LogIn';
+import Logout from './Logout';
 import UserProfile from './UserProfile';
+import ProtectedRoute from './ProtectedRoute';
 // import facebookApi from '../apis/facebook-api';
 
 function App() {
@@ -19,7 +21,8 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Route path="/" exact component={Login} />
-        <Route path="/myProfile" component={UserProfile}/>
+        <ProtectedRoute path="/myProfile" component={UserProfile}/>
+        <ProtectedRoute path="/logout" component={Logout}/>
 
       </BrowserRouter>
     </div>
