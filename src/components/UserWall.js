@@ -61,14 +61,15 @@ class UserWall extends React.Component {
         return (
             this.state.userPosts.length !== 0 ?
                 <div className="wall-container">
-                    <AddNewPost />
+                    {this.props.myProfile ? <AddNewPost /> : null}
                     <div className="postsContainer">
                         {this.renderUserPosts()}
                     </div>
                 </div> :
                 <div>
-                    <AddNewPost />
-                You don't have any posts yet..</div>
+                    {this.props.myProfile ? <AddNewPost /> : null}
+                </div>
+                
         )
 
     }

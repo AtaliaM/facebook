@@ -46,7 +46,7 @@ class UserProfile extends React.Component {
             <div>
                 <UserNavBar />
                 <UserHeader myProfile={this.state.myProfile} userName={this.state.userName}/>
-                <UserWall />
+                <UserWall myProfile={this.state.myProfile}/>
             </div>
         )
     }
