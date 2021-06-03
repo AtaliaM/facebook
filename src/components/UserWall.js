@@ -18,7 +18,7 @@ class UserWall extends React.Component {
                 headers: { Authorization: "Bearer " + userToken }
             });
             if (res) {
-                console.log(res)
+                // console.log(res)
                 this.setState({ userPosts: res.data.reverse() })
             }
 

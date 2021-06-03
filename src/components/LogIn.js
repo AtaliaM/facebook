@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../pictures/logo.svg';
+import logo from '../pictures/logo2.png';
 import '../style/Login.css';
 import facebookApi from '../apis/facebook-api';
 import Cookies from 'universal-cookie';

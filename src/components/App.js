@@ -21,9 +21,9 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Route path="/" exact component={Login} />
-        <ProtectedRoute path="/myProfile" component={UserProfile}/>
-        <ProtectedRoute path="/logout" component={Logout}/>
-
+        <ProtectedRoute path="/myProfile" component={UserProfile} />
+        <ProtectedRoute path="/logout" component={Logout} />
+        <Route path="/users/:path" exact component={UserProfile} />
       </BrowserRouter>
     </div>
   );
