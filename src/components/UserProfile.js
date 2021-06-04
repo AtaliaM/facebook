@@ -10,12 +10,10 @@ class UserProfile extends React.Component {
     state = { userToken: '', userName: '', myProfile: true }
 
     async componentDidMount() {
-        // console.log(window.location.pathname);
         if (window.location.pathname === "/myProfile") { //if the user is viewing his own profile
             try {
                 const cookies = new Cookies();
                 const userToken = cookies.get('userToken');
-
                 const res = await facebookApi.get('/users/me', {
                     headers: { Authorization: "Bearer " + userToken }
                 });
@@ -40,7 +38,6 @@ class UserProfile extends React.Component {
     }
 
     //need to pass the user's details to the following components//
-
     render() {
         return (
             <div>
@@ -50,9 +47,6 @@ class UserProfile extends React.Component {
             </div>
         )
     }
-
 }
 
 export default UserProfile;
-
-// myProfile={this.props.myProfile} userName={this.props.userName}
