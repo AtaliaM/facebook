@@ -101,7 +101,7 @@ label {
     display: none;
     position: fixed;
     bottom: 30px;
-    border: 3px solid #f1f1f1;
+    /* border: 3px solid #f1f1f1; */
     z-index: 9;
   }
   
@@ -152,6 +152,11 @@ label {
 @media screen and (max-width: 768px) {
     .container {
         flex-direction: column;
+        max-width: 80%;
+    }
+
+    .form-popup {
+        position: absolute;
         max-width: 80%;
     }
 

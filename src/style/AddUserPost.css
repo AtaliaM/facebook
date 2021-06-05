@@ -28,7 +28,7 @@ textarea {
   }
   
   /* form container */
-  .form-container {
+  .form-container2 {
     max-width: 540px;
     padding: 10px;
     background-color: white;
@@ -36,7 +36,7 @@ textarea {
   
   
   /* Set a style for the submit/login button */
-  .form-container .btn {
+  .form-container2 .btn {
     background-color: #04AA6D;
     color: white;
     padding: 16px 20px;
@@ -48,12 +48,12 @@ textarea {
   }
   
   /* cancel button */
-  .form-container .cancel {
+  .form-container2 .cancel {
     background-color: red;
   }
   
   /* Add some hover effects to buttons */
-  .form-container .btn:hover, .open-button:hover {
+  .form-container2 .btn:hover, .open-button:hover {
     opacity: 1;
   }
 

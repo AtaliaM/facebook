@@ -42,7 +42,7 @@ class AddUserPost extends React.Component {
                 </div>
     
                 <div className="form-popup2" id="myForm">
-                    <form action="/action_page.php" className="form-container" onSubmit={this.uploadPost}>
+                    <form action="/action_page.php" className="form-container2" onSubmit={this.uploadPost}>
                         <h2 className="posth2">What's on your mind?</h2>
                         <input type="text" id="postHeader" onChange={(e) => this.setState({ userPostHeader: e.target.value })} />
                         <textarea rows="4" cols="50" onChange={(e)=>this.setState({userPostBody:e.target.value})} required/>
