@@ -60,3 +60,30 @@ textarea {
   .posth2 {
       margin: 10px;
   }
+
+
+  @media screen and (max-width: 768px) {
+
+    .form-container2  {
+      max-width: 80%;
+      margin: auto;
+    }
+
+    textarea {
+      max-width: 75%;
+    }
+
+    .postHeader {
+      max-width: 75%;
+    }
+
+    .form-popup2 {
+      position: absolute;
+      top: 25%;
+      max-width: 80%;
+  }
+
+  .form-container2 .btn {
+      max-width: 70%;
+  }
+  }
