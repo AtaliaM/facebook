@@ -155,10 +155,22 @@ label {
         max-width: 80%;
     }
 
+    .form {
+        max-width: 85%;
+    }
+
+    input {
+        max-width: 80%;
+    }
+
+    .btn {
+        max-width: 80%;
+    }
+
     .form-popup {
         position: absolute;
         top: 25%;
-        max-width: 75%;
+        max-width: 80%;
     }
 
     .form-container .btn {
