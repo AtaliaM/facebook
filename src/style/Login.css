@@ -160,6 +160,10 @@ label {
         max-width: 80%;
     }
 
+    .form-container .btn {
+        max-width: 70%;
+    }
+
     h2 {
         margin: 10px;
     }
