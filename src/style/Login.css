@@ -157,6 +157,7 @@ label {
 
     .form-popup {
         position: absolute;
+        top: 25%;
         max-width: 80%;
     }
 
