@@ -1,0 +1,31 @@
+.followingContainer {
+    display: grid;
+    grid-template-columns: 50px 50px 50px;
+    grid-gap: 10px;
+    height: fit-content;
+    color: #444;
+    background-color: var(--secondary-color);
+    margin: 10px 40px;
+    padding: 20px;
+}
+
+.follow {
+    background-color: #444;
+    height: 50px;
+    width: 50px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.followingh2 {
+    color: #ffff;
+    padding: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+    .followingContainer {
+        width: 50%;
+        margin: auto;
+    }
+}

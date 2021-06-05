@@ -3,6 +3,7 @@ import '../style/UserWall.css'
 import facebookApi from '../apis/facebook-api';
 import Cookies from 'universal-cookie';
 import AddNewPost from './AddUserPost';
+import UserFollowingSection from './UserFollowingSection';
 
 
 class UserWall extends React.Component {
@@ -65,6 +66,7 @@ class UserWall extends React.Component {
                     <div className="postsContainer">
                         {this.renderUserPosts()}
                     </div>
+                    <UserFollowingSection className="followingSection"/>
                 </div> :
                 <div>
                     {this.props.myProfile ? <AddNewPost /> : null}

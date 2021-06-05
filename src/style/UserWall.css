@@ -39,4 +39,16 @@ p.postBody {
     .ui.card, .ui.card>.card {
         min-width: 290px;
     }
+
+    .wall-container {
+        flex-direction: column;
+    }
+
+    .postsContainer {
+        margin: auto;
+    }
+
+    .followingSection {
+        margin: auto;
+    }
 }
