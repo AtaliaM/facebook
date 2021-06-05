@@ -1,0 +1,8 @@
+.feedContainer {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    max-height: fit-content;
+    background-color: var(--main-bg-color);
+    padding: 20px;
+}

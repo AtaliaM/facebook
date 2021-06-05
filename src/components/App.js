@@ -4,6 +4,7 @@ import Login from './LogIn';
 import Logout from './Logout';
 import UserProfile from './UserProfile';
 import ProtectedRoute from './ProtectedRoute';
+import UserFeed from './UserFeed';
 // import facebookApi from '../apis/facebook-api';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <BrowserRouter>
         <Route path="/" exact component={Login} />
         <ProtectedRoute path="/myProfile" component={UserProfile} />
+        <ProtectedRoute path="/myFeed" component={UserFeed} />
         <ProtectedRoute path="/logout" component={Logout} />
         <Route path="/users/:path" exact component={UserProfile} />
       </BrowserRouter>
