@@ -2,7 +2,8 @@
     display: grid;
     grid-template-columns: 50px 50px 50px;
     grid-gap: 10px;
-    height: fit-content;
+    height: 200px;
+    overflow-y: scroll;
     color: #444;
     background-color: var(--secondary-color);
     margin: 10px 40px;
@@ -25,7 +26,7 @@
 
 @media only screen and (max-width: 768px) {
     .followingContainer {
-        width: 50%;
+        max-width: fit-content;
         margin: auto;
     }
 }

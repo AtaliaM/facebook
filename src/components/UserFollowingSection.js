@@ -12,6 +12,13 @@ class UserFollowingSection extends React.Component {
                     <div className="follow"></div>
                     <div className="follow"></div>
                     <div className="follow"></div>
+                    <div className="follow"></div>
+                    <div className="follow"></div>
+                    <div className="follow"></div>
+                    <div className="follow"></div>
+                    <div className="follow"></div>
+                    <div className="follow"></div>
+                    <div className="follow"></div>
                 </div>
             </div>
         )
