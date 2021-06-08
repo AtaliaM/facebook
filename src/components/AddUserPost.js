@@ -6,14 +6,13 @@ import Cookies from 'universal-cookie';
 
 class AddUserPost extends React.Component {
     //user's new post//
-    state = {userPostBody : "", userPostHeader: ""}
+    state = {userPostBody : "", userPostHeader: "", formOpened: false}
 
-    openForm = () => {
-        document.getElementById("myForm").style.display = "block";
-    }
-
-    closeForm = () => {
-        document.getElementById("myForm").style.display = "none";
+    openOrCloseForm = () => {
+        console.log("inn")
+        this.setState(prevState => ({
+            formOpened: !prevState.formOpened
+          }));
     }
 
     uploadPost = async(event) => {
@@ -38,16 +37,16 @@ class AddUserPost extends React.Component {
         return (
             <div>
                 <div className="buttonContainer">
-                    <button className="addPostBtn" onClick={() => this.openForm()}>Add new post</button>
+                    <button className="addPostBtn" onClick={() => this.openOrCloseForm()}>Add new post</button>
                 </div>
     
-                <div className="form-popup2" id="myForm">
+                <div className={`form-popup2 ${this.state.formOpened ? "show" : "hidden"}`} id="myForm">
                     <form action="/action_page.php" className="form-container2" onSubmit={this.uploadPost}>
                         <h2 className="posth2">What's on your mind?</h2>
                         <input type="text" id="postHeader" className="postHeader" onChange={(e) => this.setState({ userPostHeader: e.target.value })} />
                         <textarea rows="4" cols="50" onChange={(e)=>this.setState({userPostBody:e.target.value})} required/>
                         <button type="submit" className="btn">Submit post</button>
-                        <button type="button" className="btn cancel" onClick={() =>this.closeForm()}>Close</button>
+                        <button type="button" className="btn cancel" onClick={() =>this.openOrCloseForm()}>Close</button>
                     </form>
                 </div>
     

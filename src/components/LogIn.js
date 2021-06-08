@@ -8,14 +8,13 @@ import Cookies from 'universal-cookie';
 
 class Login extends React.Component {
 
-    state = { fname: "", lname: "", email: "", password: "", birthday: "" };
+    state = { fname: "", lname: "", email: "", password: "", birthday: "", formOpened: false };
 
-    openForm = () => {
-        document.getElementById("myForm").style.display = "block";
-    }
-
-    closeForm = () => {
-        document.getElementById("myForm").style.display = "none";
+    openOrCloseForm = () => {
+        console.log("inn")
+        this.setState(prevState => ({
+            formOpened: !prevState.formOpened
+          }));
     }
 
     logInUser = async (event) => {
@@ -70,18 +69,17 @@ class Login extends React.Component {
                         <input type="text" id="email" placeholder="Email" required onChange={(e) => this.setState({ email: e.target.value })} />
                         <input type="password" id="password" placeholder="Password" required onChange={(e) => this.setState({ password: e.target.value })} />
                         <div>
-                            {/* <input className="btn logInBtn" defaultValue="Submit"/> */}
                             <button type="submit" className="btn logInBtn">Submit</button>
                         </div>
                         <a href="/">Forgot Password?</a>
                         <br></br>
                         <div>
-                            <input className="btn newAccountBtn" defaultValue="Create New Account" onClick={() => this.openForm()} />
+                            <input className="btn newAccountBtn" defaultValue="Create New Account" onClick={() => this.openOrCloseForm()} />
                         </div>
                     </form>
                 </div>
 
-                <div className="form-popup" id="myForm">
+                <div className={`form-popup ${this.state.formOpened ? "show" : "hidden"}`} id="myForm">
                     <form action="/action_page.php" className="form-container" onSubmit={this.registerUser}>
                         <h1>Sign Up</h1>
 
@@ -90,12 +88,11 @@ class Login extends React.Component {
 
                         <input type="email" placeholder="email" name="email" required onChange={(e) => this.setState({ email: e.target.value })} />
                         <input type="password" placeholder="New Password" name="psw" minLength="7" required onChange={(e) => this.setState({ password: e.target.value })} />
-
                         {/* <label>Birthday</label>
                         <input type="date" id="birthday" name="birthday"/> */}
 
                         <button type="submit" className="btn">Sign Up</button>
-                        <button type="button" className="btn cancel" onClick={() => this.closeForm()}>Close</button>
+                        <button type="button" className="btn cancel" onClick={() => this.openOrCloseForm()}>Close</button>
                     </form>
                 </div>
             </div>
