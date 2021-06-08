@@ -1,7 +1,9 @@
 textarea {
     margin-top: 0px; 
     margin-bottom: 0px; 
-    height: 174px;
+    height: 45%;
+    resize: none;
+    width: 90%;
 }
 
 .addPostBtn {
@@ -17,6 +19,10 @@ textarea {
     cursor: pointer;
 }
 
+.postHeader {
+  width: 80%;
+}
+
 
 
 /* The popup form - hidden by default */
@@ -24,15 +30,16 @@ textarea {
     /* display: none; */
     position: fixed;
     bottom: 15px;
+    left: 25%;
     z-index: 9;
   }
   
   /* form container */
   .form-container2 {
+    height: 80vh;;
     max-width: 540px;
     padding: 10px;
     background-color: white;
-    margin: auto;
   }
   
   

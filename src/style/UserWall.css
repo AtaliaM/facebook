@@ -35,6 +35,10 @@ p.postBody {
     cursor: pointer;
 }
 
+p {
+    word-break: break-all;
+}
+
 @media only screen and (max-width: 768px) {
     .ui.card, .ui.card>.card {
         min-width: 60vw;
