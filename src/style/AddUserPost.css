@@ -21,7 +21,7 @@ textarea {
 
 /* The popup form - hidden by default */
 .form-popup2 {
-    display: none;
+    /* display: none; */
     position: fixed;
     bottom: 15px;
     z-index: 9;
