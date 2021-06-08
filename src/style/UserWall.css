@@ -12,8 +12,9 @@
     
 }
 
-.singlePostContainer {
+.card {
     color: var(--secondary-font-color);
+    height: 300px;
 }
 
 .postHeader {
@@ -33,6 +34,10 @@ p.postBody {
 .comment.icon:hover {
     color: rgb(0, 132, 255);
     cursor: pointer;
+}
+
+.scroll {
+    overflow-y: scroll;
 }
 
 p {

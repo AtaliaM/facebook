@@ -10,7 +10,6 @@ class UserWall extends React.Component {
 
     state = { userPosts: [] }
 
-    //user's posts will be fetached and displayed here//
     async componentDidMount() {
         const cookies = new Cookies();
         const userToken = cookies.get('userToken');
@@ -19,7 +18,6 @@ class UserWall extends React.Component {
                 headers: { Authorization: "Bearer " + userToken }
             });
             if (res) {
-                // console.log(res)
                 this.setState({ userPosts: res.data.reverse() })
             }
 
@@ -33,7 +31,7 @@ class UserWall extends React.Component {
             this.state.userPosts.map((post) => {
                 return (
                     <div className="ui card" key={post._id}>
-                        <div className="content">
+                        <div className="content scroll">
                             <i className="right floated like icon"></i>
                             <i className="right floated star icon"></i>
                             {post.postHeader ? <h3 className="postHeader">{post.postHeader}</h3> : null}
