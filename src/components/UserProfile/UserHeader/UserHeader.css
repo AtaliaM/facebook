@@ -52,6 +52,10 @@ button {
     cursor: pointer;
 }
 
+.userHeaderBtn {
+    background: transparent;
+}
+
 .user-header-pic-icon {
     width: 250px;
     height: 60px;
