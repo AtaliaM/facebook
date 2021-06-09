@@ -39,7 +39,7 @@ const SearchField = (props) => {
     const RenderAutocompleteUserList = () => {
         return (
             autocompleteSuggestions.map((user) => {
-                return <option id={`${user._id}`} value={`${user.firstName} ${user.lastName}`} />
+                return <option key={user.id} id={`${user.id}`} value={`${user.firstName} ${user.lastName}`}/>
             })
         )
     }
