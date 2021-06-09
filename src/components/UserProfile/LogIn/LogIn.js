@@ -65,9 +65,9 @@ class Login extends React.Component {
                 </div>
 
                 <div className="box">
-                    <form className="form" onSubmit={this.logInUser} >
-                        <input type="text" id="email" placeholder="Email" required onChange={(e) => this.setState({ email: e.target.value })} />
-                        <input type="password" id="password" placeholder="Password" required onChange={(e) => this.setState({ password: e.target.value })} />
+                    <form className="loginForm" onSubmit={this.logInUser} >
+                        <input className="logIn" type="text" id="email" placeholder="Email" required onChange={(e) => this.setState({ email: e.target.value })} />
+                        <input className="logIn" type="password" id="password" placeholder="Password" required onChange={(e) => this.setState({ password: e.target.value })} />
                         <div>
                             <button type="submit" className="btn logInBtn">Submit</button>
                         </div>
