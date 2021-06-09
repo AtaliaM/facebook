@@ -1,9 +1,9 @@
 import React from 'react';
-import UserNavBar from './UserNavBar';
-import UserHeader from './UserHeader';
-import UserWall from './UserWall';
+import UserNavBar from './UserNavBar/UserNavBar';
+import UserHeader from './UserHeader/UserHeader';
+import UserWall from './UserWall/UserWall';
 import Cookies from 'universal-cookie';
-import facebookApi from '../apis/facebook-api';
+import facebookApi from '../../apis/facebook-api';
 
 class UserProfile extends React.Component {
 

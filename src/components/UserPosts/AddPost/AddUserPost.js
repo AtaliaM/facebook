@@ -1,6 +1,6 @@
 import React from 'react';
-import '../style/AddUserPost.css';
-import facebookApi from '../apis/facebook-api';
+import './AddUserPost.css';
+import facebookApi from '../../../apis/facebook-api';
 import Cookies from 'universal-cookie';
 
 

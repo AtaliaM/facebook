@@ -1,5 +1,5 @@
 import React from 'react';
-import '../style/UserHeader.css';
+import './UserHeader.css';
 
 const UserHeader = (props) => {
 

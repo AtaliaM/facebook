@@ -1,11 +1,11 @@
 import React from 'react';
-import '../style/UserWall.css'
-import facebookApi from '../apis/facebook-api';
+import './UserWall.css'
+import facebookApi from '../../../apis/facebook-api';
 import Cookies from 'universal-cookie';
-import AddNewPost from './AddUserPost';
-import UserFollowingSection from './UserFollowingSection';
-import EditUserPost from './EditUserPost';
-import DeleteUserPost from './DeleteUserPost';
+import AddNewPost from '../../UserPosts/AddPost/AddUserPost';
+import UserFollowingSection from '../UserFollowingSection/UserFollowingSection';
+import EditUserPost from '../../UserPosts/EditPost/EditUserPost';
+import DeleteUserPost from '../../UserPosts/DeletePost/DeleteUserPost';
 
 
 class UserWall extends React.Component {

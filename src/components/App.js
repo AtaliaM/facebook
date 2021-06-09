@@ -1,10 +1,10 @@
 import '../style/App.css';
 import { BrowserRouter, Route } from 'react-router-dom';
-import Login from './LogIn';
-import Logout from './Logout';
-import UserProfile from './UserProfile';
+import Login from '../components/UserProfile/LogIn/LogIn';
+import Logout from '../components/UserProfile/LogOut/Logout';
+import UserProfile from '../components/UserProfile/UserProfile';
 import ProtectedRoute from './ProtectedRoute';
-import UserFeed from './UserFeed';
+import UserFeed from './UserFeed/UserFeed';
 // import facebookApi from '../apis/facebook-api';
 
 function App() {

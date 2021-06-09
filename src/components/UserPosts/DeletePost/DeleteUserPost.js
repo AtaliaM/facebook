@@ -1,7 +1,7 @@
 import React from 'react';
-import facebookApi from '../apis/facebook-api';
+import facebookApi from '../../../apis/facebook-api';
 import Cookies from 'universal-cookie';
-import '../style/DeleteUserPost.css';
+import './DeleteUserPost.css';
 
 class DeleteUserPost extends React.Component {
 

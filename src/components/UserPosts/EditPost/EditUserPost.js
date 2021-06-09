@@ -1,5 +1,5 @@
 import React from 'react';
-import facebookApi from '../apis/facebook-api';
+import facebookApi from '../../../apis/facebook-api';
 import Cookies from 'universal-cookie';
 
 class EditUserPost extends React.Component {

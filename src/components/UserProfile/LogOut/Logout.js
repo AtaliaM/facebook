@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../style/Logout.css';
-import facebookApi from '../apis/facebook-api';
+import './Logout.css';
+import facebookApi from '../../../apis/facebook-api';
 import Cookies from 'universal-cookie';
 
 

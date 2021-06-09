@@ -1,5 +1,5 @@
 import React from 'react';
-import '../style/UserFollowingSection.css';
+import './UserFollowingSection.css';
 
 class UserFollowingSection extends React.Component {
 

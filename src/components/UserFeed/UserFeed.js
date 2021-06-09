@@ -1,6 +1,6 @@
 import React from 'react';
-import '../style/UserFeed.css';
-import UserNavBar from './UserNavBar';
+import './UserFeed.css';
+import UserNavBar from '../UserProfile/UserNavBar/UserNavBar';
 
 class UserFeed extends React.Component {
 
