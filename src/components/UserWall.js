@@ -5,6 +5,7 @@ import Cookies from 'universal-cookie';
 import AddNewPost from './AddUserPost';
 import UserFollowingSection from './UserFollowingSection';
 import EditUserPost from './EditUserPost';
+import DeleteUserPost from './DeleteUserPost';
 
 
 class UserWall extends React.Component {
@@ -36,15 +37,13 @@ class UserWall extends React.Component {
                             <i className="right floated like icon"></i>
                             <i className="right floated star icon"></i>
                             {post.postHeader ? <h3 className="postHeader">{post.postHeader}</h3> : null}
-                            <div className="description">
+                            <div className="postBody">
                                 <p className="postBody">{post.postBody}</p>
                             </div>
                         </div>
                         <div className="extra content">
-                            <EditUserPost postId={post._id} postBody={post.postBody} postHeader={post.postHeader}/>
-                            <span className="right floated">
-                                <button className="ui button">Delete</button>
-                            </span>
+                            <EditUserPost postId={post._id} postBody={post.postBody} postHeader={post.postHeader} />
+                            <DeleteUserPost postId={post._id} />
                         </div>
                         <div className="extra content">
                             <span className="left floated like">

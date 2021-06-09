@@ -37,7 +37,7 @@ class AddUserPost extends React.Component {
         return (
             <div>
                 <div className="buttonContainer">
-                    <button className="ui button" onClick={() => this.openOrCloseForm()}>Add new post</button>
+                    <button className="ui button addBtn" onClick={() => this.openOrCloseForm()}>Add new post</button>
                 </div>
     
                 <div className={`form-popup2 ${this.state.formOpened ? "show" : "hidden"}`} id="myForm">

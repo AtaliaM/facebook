@@ -15,6 +15,7 @@
 .card {
     color: var(--secondary-font-color);
     height: 300px;
+    height: fit-content;
 }
 
 .postHeader {
@@ -22,9 +23,15 @@
     color: var(--header-color);
 }
 
+.postBody {
+    min-height: 100px;
+    max-height: 200px;
+}
+
 p.postBody {
     font-size: 16px;
     padding: 10px;
+    color:black;
 }
 
 .ui.card, .ui.card>.card {

@@ -1,0 +1,15 @@
+/* 
+
+.deleteContainer {
+    display: block
+  } */
+
+  .ui.bottom.attached.segment {
+    margin: 0 auto;
+    width: 80%;
+  }
+
+  .deleteMsg {
+    text-align: center;
+  }
+
