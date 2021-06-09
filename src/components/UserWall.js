@@ -4,6 +4,7 @@ import facebookApi from '../apis/facebook-api';
 import Cookies from 'universal-cookie';
 import AddNewPost from './AddUserPost';
 import UserFollowingSection from './UserFollowingSection';
+import EditUserPost from './EditUserPost';
 
 
 class UserWall extends React.Component {
@@ -40,6 +41,12 @@ class UserWall extends React.Component {
                             </div>
                         </div>
                         <div className="extra content">
+                            <EditUserPost postId={post._id} postBody={post.postBody} postHeader={post.postHeader}/>
+                            <span className="right floated">
+                                <button className="ui button">Delete</button>
+                            </span>
+                        </div>
+                        <div className="extra content">
                             <span className="left floated like">
                                 <i className="like icon"></i>
                                     Like</span>
@@ -64,12 +71,12 @@ class UserWall extends React.Component {
                     <div className="postsContainer">
                         {this.renderUserPosts()}
                     </div>
-                    <UserFollowingSection className="followingSection"/>
+                    <UserFollowingSection className="followingSection" />
                 </div> :
                 <div>
                     {this.props.myProfile ? <AddNewPost /> : null}
                 </div>
-                
+
         )
 
     }

@@ -21,10 +21,10 @@ class AddUserPost extends React.Component {
         const cookies = new Cookies();
         const userToken = cookies.get('userToken');
         try {
-            facebookApi.post('/posts', post, {
+            await facebookApi.post('/posts', post, {
                 headers: { Authorization: "Bearer " + userToken }
             })
-            document.getElementById("myForm").style.display = "none";
+            this.openOrCloseForm();
             window.location.reload();
             // this.props.history.push("/myProfile");
         } catch(e) {
@@ -37,7 +37,7 @@ class AddUserPost extends React.Component {
         return (
             <div>
                 <div className="buttonContainer">
-                    <button className="addPostBtn" onClick={() => this.openOrCloseForm()}>Add new post</button>
+                    <button className="ui button" onClick={() => this.openOrCloseForm()}>Add new post</button>
                 </div>
     
                 <div className={`form-popup2 ${this.state.formOpened ? "show" : "hidden"}`} id="myForm">
