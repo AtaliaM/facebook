@@ -44,10 +44,10 @@ const SearchField = (props) => {
 
     const submitChosenUser = (e) => {
         e.preventDefault();
-        const city = autocompleteSuggestions.filter(user =>
+        const user = autocompleteSuggestions.filter(user =>
             user.firstName = user.lastName === debouncedTerm
         );
-        console.log(city);
+        console.log(user);
     }
 
 
