@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import facebookApi from '../../apis/facebook-api';
 
-
 const SearchField = (props) => {
 
     const [term, setTerm] = useState("");
     const [debouncedTerm, setDebouncedTerm] = useState(term);
     const [autocompleteSuggestions, setAutocompleteSuggestions] = useState([]);
-
 
     useEffect(() => {
         const timerId = setTimeout(() => {
@@ -56,7 +54,6 @@ const SearchField = (props) => {
     return (
         <div className="searchField">
             <form autoComplete="on">
-                {/* <label>Search:</label> */}
                 <div className="ui action input mini">
                     <input type="text" list="autocomplete"
                         onChange={event => setTerm(event.target.value)} value={term} />
@@ -69,7 +66,6 @@ const SearchField = (props) => {
             </form>
         </div>
     )
-
 }
 
 export default SearchField;
