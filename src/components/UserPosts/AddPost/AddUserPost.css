@@ -33,7 +33,7 @@ textarea {
   /* form container */
   .add-post-form-container {
     height: 80vh;
-    max-width: 540px;
+    max-width: fit-content;
     padding: 10px;
     background-color: white;
   }
