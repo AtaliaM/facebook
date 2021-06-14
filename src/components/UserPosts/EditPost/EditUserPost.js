@@ -1,6 +1,7 @@
 import React from 'react';
 import facebookApi from '../../../apis/facebook-api';
 import Cookies from 'universal-cookie';
+import './EditUserPost.css';
 
 class EditUserPost extends React.Component {
 
@@ -37,8 +38,8 @@ class EditUserPost extends React.Component {
                     <button className="ui button" onClick={() => this.openOrCloseForm()}>Edit</button>
                 </span>
 
-                <div className={`form-popup2 ${this.state.formOpened ? "show" : "hidden"}`} id="myForm">
-                    <form action="/action_page.php" className="form-container2" onSubmit={this.editUserPost}>
+                <div className={`edit-post-form-popup ${this.state.formOpened ? "show" : "hidden"}`} id="myForm">
+                    <form action="/action_page.php" className="edit-post-form-container" onSubmit={this.editUserPost}>
                         <h2 className="posth2">What's on your mind?</h2>
                         <input type="text" id="postHeader" className="postHeader" defaultValue={this.props.postHeader} onChange={(e) => this.setState({ editedPostHeader: e.target.value })} />
                         <textarea defaultValue={this.props.postBody} onChange={(e)=>this.setState({editedPostBody:e.target.value})} required/>

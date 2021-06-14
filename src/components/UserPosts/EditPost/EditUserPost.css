@@ -1,0 +1,59 @@
+.edit-post-form-popup {
+    /* display: none; */
+    position: fixed;
+    height: 80vh;
+    bottom: 15px;
+    left: 25%;
+    z-index: 9;
+  }
+  
+  /* form container */
+  .edit-post-form-container {
+    height: 80vh;
+    max-width: 540px;
+    padding: 10px;
+    background-color: white;
+  }
+  
+  /* Set a style for the submit/login button */
+  .edit-post-form-container .btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 70%;
+    margin-bottom:10px;
+    opacity: 0.8;
+  }
+  
+  /* cancel button */
+  .edit-post-form-container .cancel {
+    background-color: red;
+  }
+  
+  /* Add some hover effects to buttons */
+  .edit-post-form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+  }
+
+
+  @media screen and (max-width: 768px) {
+
+    .edit-post-form-popup {
+      position: absolute;
+      top: 10%;
+      left:0;
+      min-width: 250px;
+      max-width: 80%;
+  }
+    .edit-post-form-container  {
+      min-width: 250px;
+      max-width: 80%;
+      margin: auto;
+    }
+
+  .edit-post-form-container .btn {
+      max-width: 70%;
+  }
+  }
