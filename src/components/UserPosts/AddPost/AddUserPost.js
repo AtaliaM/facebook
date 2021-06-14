@@ -40,8 +40,8 @@ class AddUserPost extends React.Component {
                     <button className="ui button addBtn" onClick={() => this.openOrCloseForm()}>Add new post</button>
                 </div>
     
-                <div className={`form-popup2 ${this.state.formOpened ? "show" : "hidden"}`} id="myForm">
-                    <form action="/action_page.php" className="form-container2" onSubmit={this.uploadPost}>
+                <div className={`add-post-form-popup ${this.state.formOpened ? "show" : "hidden"}`} id="myForm">
+                    <form action="/action_page.php" className="add-post-form-container" onSubmit={this.uploadPost}>
                         <h2 className="posth2">What's on your mind?</h2>
                         <input type="text" id="postHeader" className="postHeader" onChange={(e) => this.setState({ userPostHeader: e.target.value })} />
                         <textarea onChange={(e)=>this.setState({userPostBody:e.target.value})} required/>
