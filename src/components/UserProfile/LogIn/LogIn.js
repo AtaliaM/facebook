@@ -8,18 +8,23 @@ import Cookies from 'universal-cookie';
 
 class Login extends React.Component {
 
-    state = { fname: "", lname: "", email: "", password: "", birthday: "", formOpened: false };
+    state = { fname: "", lname: "", email: "", password: "", birthday: "", formOpened: false, submitBtnPushed: false };
 
     openOrCloseForm = () => {
-        console.log("inn")
         this.setState(prevState => ({
             formOpened: !prevState.formOpened
           }));
     }
 
+    onSubmitBtnPushed = () => {
+        this.setState(prevState => ({
+            submitBtnPushed: !prevState.submitBtnPushed
+          }));
+    }
+
     logInUser = async (event) => {
         event.preventDefault();
-        console.log("login")
+        this.onSubmitBtnPushed();
         const reqBody = { email: this.state.email, password: this.state.password };
 
         try {
@@ -37,7 +42,7 @@ class Login extends React.Component {
 
     registerUser = async (event) => {
         event.preventDefault();
-        console.log("register");
+        this.onSubmitBtnPushed();
 
         const reqBody = {firstName:this.state.fname, lastName:this.state.lname, 
             email: this.state.email, password: this.state.password };
@@ -61,6 +66,7 @@ class Login extends React.Component {
                     <div>
                         <img src={logo} className="logo-picture" alt="logo"></img>
                         <h2>Connect with friends and the world around you on Facebook.</h2>
+                        <div className={`${this.state.submitBtnPushed ? "ui active centered inline loader" : ""}`}></div>
                     </div>
                 </div>
 
@@ -69,7 +75,7 @@ class Login extends React.Component {
                         <input className="logIn" type="text" id="email" placeholder="Email" required onChange={(e) => this.setState({ email: e.target.value })} />
                         <input className="logIn" type="password" id="password" placeholder="Password" required onChange={(e) => this.setState({ password: e.target.value })} />
                         <div>
-                            <button type="submit" className="btn logInBtn">Submit</button>
+                            <button type="submit" className="btn logInBtn" >Submit</button>
                         </div>
                         <a href="/">Forgot Password?</a>
                         <br></br>
