@@ -42,7 +42,7 @@ class EditUserPost extends React.Component {
                     <form action="/action_page.php" className="edit-post-form-container" onSubmit={this.editUserPost}>
                         <h2 className="posth2">What's on your mind?</h2>
                         <input type="text" id="postHeader" className="postHeader" defaultValue={this.props.postHeader} onChange={(e) => this.setState({ editedPostHeader: e.target.value })} />
-                        <textarea defaultValue={this.props.postBody} onChange={(e)=>this.setState({editedPostBody:e.target.value})} required/>
+                        <textarea name="editPostText" id="editPostText" defaultValue={this.props.postBody} onChange={(e)=>this.setState({editedPostBody:e.target.value})} required/>
                         <button type="submit" className="btn">Submit post</button>
                         <button type="button" className="btn cancel" onClick={() =>this.openOrCloseForm()}>Close</button>
                     </form>

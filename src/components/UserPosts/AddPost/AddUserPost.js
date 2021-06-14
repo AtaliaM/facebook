@@ -44,7 +44,7 @@ class AddUserPost extends React.Component {
                     <form action="/action_page.php" className="add-post-form-container" onSubmit={this.uploadPost}>
                         <h2 className="posth2">What's on your mind?</h2>
                         <input type="text" id="postHeader" className="postHeader" onChange={(e) => this.setState({ userPostHeader: e.target.value })} />
-                        <textarea onChange={(e)=>this.setState({userPostBody:e.target.value})} required/>
+                        <textarea name="addPostText" id="addPostText" onChange={(e)=>this.setState({userPostBody:e.target.value})} required/>
                         <button type="submit" className="btn">Submit post</button>
                         <button type="button" className="btn cancel" onClick={() =>this.openOrCloseForm()}>Close</button>
                     </form>
