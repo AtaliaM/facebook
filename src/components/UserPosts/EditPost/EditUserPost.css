@@ -10,7 +10,7 @@
   /* form container */
   .edit-post-form-container {
     height: 80vh;
-    max-width: fit-content;
+    max-width: 70%;
     padding: 10px;
     background-color: white;
   }
@@ -48,7 +48,7 @@
       max-width: 80%;
   }
     .edit-post-form-container  {
-      min-width: 250px;
+      min-width: 370px;
       max-width: 80%;
       margin: auto;
     }
