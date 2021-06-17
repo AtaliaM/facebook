@@ -72,8 +72,10 @@ class UserWall extends React.Component {
                     </div>
                     <UserFollowingSection className="followingSection" />
                 </div> :
-                <div>
+                <div className="wall-container">
                     {this.props.myProfile ? <AddNewPost /> : null}
+                    <div className="noPostsMsg">{this.props.myProfile ? `You don't have any posts yet` : `This user doesn't have any posts yet`}</div>
+                    <UserFollowingSection className="followingSection" />
                 </div>
 
         )
@@ -81,5 +83,21 @@ class UserWall extends React.Component {
     }
 
 }
+
+
+// return (
+//     this.state.userPosts.length !== 0 ?
+//         <div className="wall-container">
+//             {this.props.myProfile ? <AddNewPost /> : null}
+//             <div className="postsContainer">
+//                 {this.renderUserPosts()}
+//             </div>
+//             <UserFollowingSection className="followingSection" />
+//         </div> :
+//         <div>
+//             {this.props.myProfile ? <AddNewPost /> : null}
+//         </div>
+
+// )
 
 export default UserWall;

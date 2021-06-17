@@ -16,12 +16,48 @@
     width: 50px;
     color: #fff;
     border-radius: 5px;
-    padding: 20px;
+    /* padding: 20px; */
 }
 
 .followingh2 {
     color: #ffff;
     padding: 10px;
+}
+
+.followingPhoto {
+    height: 50px;
+    width: 50px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.followingName {
+    position: relative;
+    text-decoration: none;
+    color: red;
+}
+
+span[data-tooltip]:hover::before {
+    background-color: blue;
+    content: attr(data-tooltip); /*attr(data-tooltip) makes it reusable code*/
+    position: absolute;
+    top: -10px;
+    padding: 2px 2px;
+    border-radius: 2px;
+    font-size: 12px;
+    color: black;
+    width: max-content;
+}
+
+
+span[data-tooltip]:hover::after {
+    content:'';
+    position: absolute;
+    top:-2px;
+    left:8px;
+    border-right: transparent 4px solid;
+    border-left: transparent 4px solid;
+    border-top: darkgrey 9px solid;
 }
 
 @media only screen and (max-width: 768px) {

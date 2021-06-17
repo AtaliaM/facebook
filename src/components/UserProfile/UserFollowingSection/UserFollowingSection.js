@@ -1,7 +1,9 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import './UserFollowingSection.css';
 import facebookApi from '../../../apis/facebook-api';
 import Cookies from 'universal-cookie';
+import tempPhoto from '../../../pictures/icon2.png';
 
 class UserFollowingSection extends React.Component {
 
@@ -17,23 +19,30 @@ class UserFollowingSection extends React.Component {
         const data = [...res.data.usersIFollow];
         const followinglist = [];
 
-        data.forEach(async(following)=> {
-            try {
-                const res = await facebookApi.get(`/users/${following.userId}`)
-                followinglist.push(res.data[0]);
-            } catch(e) {
-                console.log(e);
-            }
-        })
+        for (let i = 0; i <data.length; i++) {
+            const currentFollowing = await this.fetchUsers(data,i);
+            followinglist.push(currentFollowing);
+        }
+        
         this.setState({followinglist: [...followinglist]})
+    }
+
+    fetchUsers = async(data, i) => {
+        try {
+            const res = await facebookApi.get(`/users/id/${data[i].userId}`)
+            return res.data;
+        } catch(e) {
+            console.log(e);
+        }
     }
 
     renderFollowingList = () => {
         return (
             this.state.followinglist.map((following)=> {
                 return (
-                    <div className="follow">
-                        <p>{`${following.firstName} ${following.lastName}`}</p>
+                    <div key={following._id} >
+                        <a href={`/users/${following.path}`} className="followingName" data-tooltip= {`${following.firstName} ${following.lastName}`}>
+                        <img className="follow" alt={`${following._id}`} src={tempPhoto}></img></a>
                     </div>
                 )
             })

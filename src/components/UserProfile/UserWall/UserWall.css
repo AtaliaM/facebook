@@ -51,6 +51,12 @@ p {
     word-break: break-all;
 }
 
+.noPostsMsg {
+    margin: auto;
+    font-size: 20px;
+    color: white;
+}
+
 @media only screen and (max-width: 768px) {
     .ui.card, .ui.card>.card {
         min-width: 60vw;
