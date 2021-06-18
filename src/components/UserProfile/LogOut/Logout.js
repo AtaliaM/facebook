@@ -14,7 +14,7 @@ class Logout extends React.Component {
             const res = await facebookApi.post('/users/logout',token, {
                 headers: { Authorization: "Bearer " + token }
             })
-            console.log(res)
+            console.log(token)
             cookies.remove('userToken');
             this.props.history.push("/");
         } catch (e) {

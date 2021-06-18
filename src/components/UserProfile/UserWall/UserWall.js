@@ -6,13 +6,14 @@ import AddNewPost from '../../UserPosts/AddPost/AddUserPost';
 import UserFollowingSection from '../UserFollowingSection/UserFollowingSection';
 import EditUserPost from '../../UserPosts/EditPost/EditUserPost';
 import DeleteUserPost from '../../UserPosts/DeletePost/DeleteUserPost';
-
+// import FollowButton from '../FollowButton/FollowButton';
 
 class UserWall extends React.Component {
 
-    state = { userPosts: [] }
+    state = { userPosts: []}
 
     async componentDidMount() {
+        console.log(this.props)
         const cookies = new Cookies();
         const userToken = cookies.get('userToken');
         try {
@@ -41,10 +42,12 @@ class UserWall extends React.Component {
                                 <p className="postBody">{post.postBody}</p>
                             </div>
                         </div>
+                        {this.props.myProfile ?
                         <div className="extra content">
                             <EditUserPost postId={post._id} postBody={post.postBody} postHeader={post.postHeader} />
                             <DeleteUserPost postId={post._id} />
                         </div>
+                            : null}
                         <div className="extra content">
                             <span className="left floated like">
                                 <i className="like icon"></i>
@@ -77,27 +80,9 @@ class UserWall extends React.Component {
                     <div className="noPostsMsg">{this.props.myProfile ? `You don't have any posts yet` : `This user doesn't have any posts yet`}</div>
                     <UserFollowingSection className="followingSection" />
                 </div>
-
         )
-
     }
-
 }
 
-
-// return (
-//     this.state.userPosts.length !== 0 ?
-//         <div className="wall-container">
-//             {this.props.myProfile ? <AddNewPost /> : null}
-//             <div className="postsContainer">
-//                 {this.renderUserPosts()}
-//             </div>
-//             <UserFollowingSection className="followingSection" />
-//         </div> :
-//         <div>
-//             {this.props.myProfile ? <AddNewPost /> : null}
-//         </div>
-
-// )
 
 export default UserWall;

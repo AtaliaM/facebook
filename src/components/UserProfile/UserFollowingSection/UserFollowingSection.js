@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './UserFollowingSection.css';
 import facebookApi from '../../../apis/facebook-api';
 import Cookies from 'universal-cookie';
@@ -10,39 +11,60 @@ class UserFollowingSection extends React.Component {
     state = { followinglist: [] }
 
     async componentDidMount() {
-        const cookies = new Cookies();
-        const userToken = cookies.get('userToken');
-
-        const res = await facebookApi.get('/users/me', {
-            headers: { Authorization: "Bearer " + userToken }
-        });
-        const data = [...res.data.usersIFollow];
         const followinglist = [];
 
-        for (let i = 0; i <data.length; i++) {
-            const currentFollowing = await this.fetchUsers(data,i);
-            followinglist.push(currentFollowing);
+        if (window.location.pathname === "/myProfile") { //if the user is viewing his own profile
+            const cookies = new Cookies();
+            const userToken = cookies.get('userToken');
+            try {
+                const res = await facebookApi.get('/users/me', {
+                    headers: { Authorization: "Bearer " + userToken }
+                });
+                const data = [...res.data.usersIFollow];
+                for (let i = 0; i < data.length; i++) {
+                    const currentFollowing = await this.fetchUsers(data, i);
+                    followinglist.push(currentFollowing);
+                }
+            } catch(e) {
+                console.log(e);
+            }
         }
-        
-        this.setState({followinglist: [...followinglist]})
+        else {
+            try {
+                const path = window.location.pathname.slice(7);
+                const res = await facebookApi.get(`/users/${path}`);
+                console.log("in another user profile...")
+                console.log(res)
+                const data = [...res.data[0].usersIFollow];
+                for (let i = 0; i < data.length; i++) {
+                    const currentFollowing = await this.fetchUsers(data, i);
+                    followinglist.push(currentFollowing);
+                }
+            } catch (e) {
+                console.log(e);
+            }
+        }
+
+
+        this.setState({ followinglist: [...followinglist] })
     }
 
-    fetchUsers = async(data, i) => {
+    fetchUsers = async (data, i) => {
         try {
             const res = await facebookApi.get(`/users/id/${data[i].userId}`)
             return res.data;
-        } catch(e) {
+        } catch (e) {
             console.log(e);
         }
     }
 
     renderFollowingList = () => {
         return (
-            this.state.followinglist.map((following)=> {
+            this.state.followinglist.map((following) => {
                 return (
                     <div key={following._id} >
-                        <a href={`/users/${following.path}`} className="followingName" data-tooltip= {`${following.firstName} ${following.lastName}`}>
-                        <img className="follow" alt={`${following._id}`} src={tempPhoto}></img></a>
+                        <a href={`/users/${following.path}`} className="followingName" data-tooltip={`${following.firstName} ${following.lastName}`}>
+                            <img className="follow" alt={`${following._id}`} src={tempPhoto}></img></a>
                     </div>
                 )
             })
