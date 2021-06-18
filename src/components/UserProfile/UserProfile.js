@@ -14,13 +14,11 @@ class UserProfile extends React.Component {
             try {
                 const cookies = new Cookies();
                 const userToken = cookies.get('userToken');
-                console.log(userToken)
                 const res = await facebookApi.get('/users/me', {
                     headers: { Authorization: "Bearer " + userToken }
                 });
 
-                this.setState({ userToken: userToken, userName: `${res.data.firstName} ${res.data.lastName}` });
-
+                this.setState({ userToken: userToken, userName: `${res.data.firstName} ${res.data.lastName}`, userId: `${res.data._id}` });
                 if (!userToken) {
                     this.props.history.push('/');
                 }
@@ -33,7 +31,7 @@ class UserProfile extends React.Component {
                 const path = window.location.pathname.slice(7);
                 const res = await facebookApi.get(`/users/${path}`);
                 console.log("in another user profile...")
-                this.setState({ myProfile: false, userName: `${res.data[0].firstName} ${res.data[0].lastName}`, userId: `${res.data[0]._id}`, userPath:`${res.data[0].path}` })
+                this.setState({ myProfile: false, userName: `${res.data[0].firstName} ${res.data[0].lastName}`, userId: `${res.data[0]._id}`, userPath: `${res.data[0].path}` })
             } catch (e) {
                 console.log(e);
             }
@@ -43,11 +41,10 @@ class UserProfile extends React.Component {
     //need to pass the user's details to the following components//
     render() {
         return (
-            <div> 
+            <div>
                 <UserNavBar />
-                <UserHeader myProfile={this.state.myProfile} userName={this.state.userName}  userId={this.state.userId} userPath={this.state.userPath}/>
-                {/* {this.state.userName !== '' ? */}
-                <UserWall myProfile={this.state.myProfile} userId={this.state.userId} userPath={this.state.userPath}/>
+                <UserHeader myProfile={this.state.myProfile} userName={this.state.userName} userId={this.state.userId} userPath={this.state.userPath} />
+                <UserWall key={this.state.userId} myProfile={this.state.myProfile} userId={this.state.userId} />
             </div>
         )
     }

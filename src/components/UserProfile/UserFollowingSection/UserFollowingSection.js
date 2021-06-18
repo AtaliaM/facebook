@@ -11,7 +11,6 @@ class UserFollowingSection extends React.Component {
 
     async componentDidMount() {
         const followinglist = [];
-
         if (window.location.pathname === "/myProfile") { //if the user is viewing his own profile
             const cookies = new Cookies();
             const userToken = cookies.get('userToken');
@@ -44,6 +43,13 @@ class UserFollowingSection extends React.Component {
         this.setState({ followinglist: [...followinglist] })
     }
 
+    componentWillUnmount() {
+        // fix Warning: Can't perform a React state update on an unmounted component
+        this.setState = (state,callback)=>{
+            return;
+        };
+    }
+
     fetchUsers = async (data, i) => {
         try {
             const res = await facebookApi.get(`/users/id/${data[i].userId}`)
@@ -65,6 +71,7 @@ class UserFollowingSection extends React.Component {
             })
         )
     }
+
 
     render() {
         return (

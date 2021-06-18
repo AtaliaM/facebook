@@ -1,31 +1,27 @@
 import React from 'react';
 import './UserWall.css'
 import facebookApi from '../../../apis/facebook-api';
-import Cookies from 'universal-cookie';
 import AddNewPost from '../../UserPosts/AddPost/AddUserPost';
 import UserFollowingSection from '../UserFollowingSection/UserFollowingSection';
 import EditUserPost from '../../UserPosts/EditPost/EditUserPost';
 import DeleteUserPost from '../../UserPosts/DeletePost/DeleteUserPost';
-// import FollowButton from '../FollowButton/FollowButton';
 
 class UserWall extends React.Component {
 
     state = { userPosts: []}
 
     async componentDidMount() {
-        console.log(this.props)
-        const cookies = new Cookies();
-        const userToken = cookies.get('userToken');
-        try {
-            const res = await facebookApi.get('/posts', {
-                headers: { Authorization: "Bearer " + userToken }
-            });
-            if (res) {
-                this.setState({ userPosts: res.data.reverse() })
+        if (this.props.userId) {
+            try {
+                const res = await facebookApi.get(`/posts/user/${this.props.userId}`);
+                console.log(res)
+                if (res) {
+                    this.setState({ userPosts: res.data.reverse() })
+                }
+    
+            } catch (e) {
+                console.log(e);
             }
-
-        } catch (e) {
-            console.log(e);
         }
     }
 
