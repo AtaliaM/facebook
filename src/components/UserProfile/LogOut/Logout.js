@@ -4,17 +4,15 @@ import './Logout.css';
 import facebookApi from '../../../apis/facebook-api';
 import Cookies from 'universal-cookie';
 
-
 class Logout extends React.Component {
 
     logout = async () => {
         const cookies = new Cookies();
         const token = cookies.get('userToken');
         try {
-            const res = await facebookApi.post('/users/logout',token, {
+            await facebookApi.post('/users/logout',token, {
                 headers: { Authorization: "Bearer " + token }
             })
-            console.log(token)
             cookies.remove('userToken');
             this.props.history.push("/");
         } catch (e) {
