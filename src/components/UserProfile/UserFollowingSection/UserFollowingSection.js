@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './UserFollowingSection.css';
 import facebookApi from '../../../apis/facebook-api';
 import Cookies from 'universal-cookie';
@@ -33,8 +32,6 @@ class UserFollowingSection extends React.Component {
             try {
                 const path = window.location.pathname.slice(7);
                 const res = await facebookApi.get(`/users/${path}`);
-                console.log("in another user profile...")
-                console.log(res)
                 const data = [...res.data[0].usersIFollow];
                 for (let i = 0; i < data.length; i++) {
                     const currentFollowing = await this.fetchUsers(data, i);
@@ -44,8 +41,6 @@ class UserFollowingSection extends React.Component {
                 console.log(e);
             }
         }
-
-
         this.setState({ followinglist: [...followinglist] })
     }
 
