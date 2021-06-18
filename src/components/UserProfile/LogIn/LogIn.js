@@ -4,8 +4,6 @@ import './Login.css';
 import facebookApi from '../../../apis/facebook-api';
 import Cookies from 'universal-cookie';
 
-//need to save user's details after he logged in - either in redux or in cookies//
-
 class Login extends React.Component {
 
     state = { fname: "", lname: "", email: "", password: "", birthday: "", formOpened: false, submitBtnPushed: false };
@@ -29,7 +27,6 @@ class Login extends React.Component {
 
         try {
             const response = await facebookApi.post("/users/login", reqBody);
-            // this.setState({user:response.data.user});
             //setting new token cookie for the user who just logged in//
             const cookies = new Cookies();
             cookies.set('userToken', response.data.token);
@@ -94,8 +91,6 @@ class Login extends React.Component {
 
                         <input type="email" placeholder="email" name="email" required onChange={(e) => this.setState({ email: e.target.value })} />
                         <input type="password" placeholder="New Password" name="psw" minLength="7" required onChange={(e) => this.setState({ password: e.target.value })} />
-                        {/* <label>Birthday</label>
-                        <input type="date" id="birthday" name="birthday"/> */}
 
                         <button type="submit" className="btn">Sign Up</button>
                         <button type="button" className="btn cancel" onClick={() => this.openOrCloseForm()}>Close</button>
@@ -105,6 +100,5 @@ class Login extends React.Component {
         )
     }
 }
-
 
 export default Login;
