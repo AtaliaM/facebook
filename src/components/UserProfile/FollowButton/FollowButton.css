@@ -1,0 +1,10 @@
+.ui.button.followBtn {
+    margin: 10px;
+    float: left;
+}
+
+@media screen and (max-width: 768px) {
+.ui.button.followBtn {
+    float: none;
+}
+}

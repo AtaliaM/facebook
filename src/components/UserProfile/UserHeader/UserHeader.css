@@ -19,7 +19,7 @@
 }
 
 .user-image {
-    box-sizing:content-box;
+    /* box-sizing:content-box; */
     height: 400px;
     width: 190px;
     background-color: var(--secondary-color);

@@ -2,6 +2,7 @@ import React from 'react';
 import Cookies from 'universal-cookie';
 import facebookApi from '../../../apis/facebook-api';
 import FollowButton from '../FollowButton/FollowButton';
+import '../FollowButton/FollowButton.css'
 
 class UnfollowButton extends React.Component {
 
@@ -27,7 +28,7 @@ class UnfollowButton extends React.Component {
         return (
             <div className="buttonContainer">
                 {this.state.followingUser ?
-                    <button className="ui button addBtn" onClick={() => this.onUnfollowUserClick()}>Unfollow User</button>
+                    <button className="ui button followBtn" onClick={() => this.onUnfollowUserClick()}>Unfollow User</button>
                     :
                     <FollowButton userId={this.props.userId} userPath={this.props.userPath} />
                 }
