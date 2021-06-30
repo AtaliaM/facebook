@@ -1,23 +1,26 @@
 import React, { useState, useEffect } from 'react';
+// import { useHistory } from 'react-router-dom';
 import facebookApi from '../../apis/facebook-api';
 
 const SearchField = (props) => {
-
+    
     const [term, setTerm] = useState("");
     const [debouncedTerm, setDebouncedTerm] = useState(term);
     const [autocompleteSuggestions, setAutocompleteSuggestions] = useState([]);
+    // const history = useHistory();
+    
+    // const autoCompleteList = useRef([]);
 
     useEffect(() => {
         const timerId = setTimeout(() => {
             if (term !== "") {
                 setDebouncedTerm(term);
             }
-        }, 1000);
+        }, 200);
         return () => {
             clearTimeout(timerId);
         }
     }, [term])
-
 
     useEffect(() => {
         const search = async () => {
@@ -37,7 +40,7 @@ const SearchField = (props) => {
     const RenderAutocompleteUserList = () => {
         return (
             autocompleteSuggestions.map((user) => {
-                return <option key={user.id} id={`${user.id}`} value={`${user.firstName} ${user.lastName}`}/>
+                return <option key={user.id} id={`${user.id}`} value={`${user.firstName} ${user.lastName}`} path={`${user.path}`}/>
             })
         )
     }
@@ -45,9 +48,17 @@ const SearchField = (props) => {
     const submitChosenUser = (e) => {
         e.preventDefault();
         const user = autocompleteSuggestions.filter(user =>
-            user.firstName = user.lastName === debouncedTerm
+            `${user.firstName} ${user.lastName}` === debouncedTerm
         );
-        console.log(user);
+        console.log(window.location.pathname)
+        console.log(document.location)
+        try {
+            // history.push({pathname: `users/${user[0].path}`});
+            // window.location.replace(`users/${user[0].path}`)
+            document.location.pathname = `users/${user[0].path}`;
+        } catch(e) {
+            alert("Can't reach user's page")
+        }
     }
 
 
@@ -57,7 +68,7 @@ const SearchField = (props) => {
                 <div className="ui action input mini">
                     <input type="text" list="autocomplete"
                         onChange={event => setTerm(event.target.value)} value={term} />
-                    <button className="ui icon button" onClick={(e) => submitChosenUser(e)}><i className="search icon"></i></button>
+                    <button className="ui icon button" onClick={(e)=>submitChosenUser(e)}><i className="search icon"></i></button>
                 </div>
                 {autocompleteSuggestions.length > 0 ?
                     <datalist id="autocomplete">
