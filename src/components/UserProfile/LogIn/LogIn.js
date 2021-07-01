@@ -33,6 +33,7 @@ class Login extends React.Component {
             this.props.history.push('/myProfile');
         } catch (e) {
             console.log(e);
+            this.onSubmitBtnPushed();
             alert("E-mail or password are invalid");
         }
     }
@@ -52,6 +53,7 @@ class Login extends React.Component {
                 this.props.history.push('/myProfile');
             } catch (e) {
                 console.log(e);
+                this.onSubmitBtnPushed();
                 alert("Inputs are invalid");
             }
     }
