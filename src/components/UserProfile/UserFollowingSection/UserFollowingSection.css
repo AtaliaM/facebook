@@ -1,3 +1,5 @@
+
+
 .followingContainer {
     display: grid;
     grid-template-columns: 50px 50px 50px;
@@ -6,8 +8,9 @@
     overflow-y: scroll;
     color: #444;
     background-color: var(--secondary-color);
-    margin: 10px 40px;
-    padding: 20px;
+    margin: 10px 20px;
+    margin-right: 0;
+    padding: 10px;
 }
 
 .follow {

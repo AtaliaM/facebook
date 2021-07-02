@@ -8,7 +8,7 @@ import DeleteUserPost from '../../UserPosts/DeletePost/DeleteUserPost';
 
 class UserWall extends React.Component {
 
-    state = { userPosts: []}
+    state = { userPosts: [] }
 
     async componentDidMount() {
         if (this.props.userId) {
@@ -18,7 +18,7 @@ class UserWall extends React.Component {
                 if (res) {
                     this.setState({ userPosts: res.data.reverse() })
                 }
-    
+
             } catch (e) {
                 console.log(e);
             }
@@ -39,21 +39,21 @@ class UserWall extends React.Component {
                             </div>
                         </div>
                         {this.props.myProfile ?
-                        <div className="extra content">
-                            <EditUserPost postId={post._id} postBody={post.postBody} postHeader={post.postHeader} />
-                            <DeleteUserPost postId={post._id} />
-                        </div>
+                            <div className="extra content">
+                                <EditUserPost postId={post._id} postBody={post.postBody} postHeader={post.postHeader} />
+                                <DeleteUserPost postId={post._id} />
+                            </div>
                             : null}
                         <div className="extra content">
                             <span className="left floated like">
                                 <i className="like icon"></i>
-                                    Like</span>
+                                Like</span>
                             <span >
                                 <i className="comment icon"></i>
-                                    Comments</span>
+                                Comments</span>
                             <span className="right floated star">
                                 <i className="star icon"></i>
-                                    Favorite</span>
+                                Favorite</span>
                         </div>
                     </div>
                 )
@@ -69,12 +69,14 @@ class UserWall extends React.Component {
                     <div className="postsContainer">
                         {this.renderUserPosts()}
                     </div>
-                    <UserFollowingSection className="followingSection" />
+                        <UserFollowingSection className="followingSection" sectionType="usersIFollow" />
+                        <UserFollowingSection className="followingSection" sectionType="followingMe" />
                 </div> :
                 <div className="wall-container">
                     {this.props.myProfile ? <AddNewPost /> : null}
                     <div className="noPostsMsg">{this.props.myProfile ? `You don't have any posts yet` : `This user doesn't have any posts yet`}</div>
-                    <UserFollowingSection className="followingSection" />
+                    <UserFollowingSection className="followingSection" sectionType="usersIFollow" />
+                    <UserFollowingSection className="followingSection" sectionType="followingMe" />
                 </div>
         )
     }

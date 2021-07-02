@@ -10,6 +10,7 @@ class UserFollowingSection extends React.Component {
     state = { followinglist: [] }
 
     async componentDidMount() {
+        console.log(this.props.sectionType)
         const followinglist = [];
         if (window.location.pathname === "/myProfile") { //if the user is viewing his own profile
             const cookies = new Cookies();
@@ -18,7 +19,7 @@ class UserFollowingSection extends React.Component {
                 const res = await facebookApi.get('/users/me', {
                     headers: { Authorization: "Bearer " + userToken }
                 });
-                const data = [...res.data.usersIFollow];
+                const data = this.props.sectionType === "usersIFollow" ? [...res.data.usersIFollow] : [...res.data.myFollowers];
                 for (let i = 0; i < data.length; i++) {
                     const currentFollowing = await this.fetchUsers(data, i);
                     followinglist.push(currentFollowing);
@@ -31,7 +32,7 @@ class UserFollowingSection extends React.Component {
             try {
                 const path = window.location.pathname.slice(7);
                 const res = await facebookApi.get(`/users/${path}`);
-                const data = [...res.data[0].usersIFollow];
+                const data = this.props.sectionType === "usersIFollow" ? [...res.data[0].usersIFollow] : [...res.data[0].myFollowers];
                 for (let i = 0; i < data.length; i++) {
                     const currentFollowing = await this.fetchUsers(data, i);
                     followinglist.push(currentFollowing);
@@ -75,8 +76,8 @@ class UserFollowingSection extends React.Component {
 
     render() {
         return (
-            <div>
-                <h3 className="followingh2">Users I follow</h3>
+            <div className="followingSectionContainer">
+                <h3 className="followingh2">{this.props.sectionType==="usersIFollow" ? "Users I follow" : "My Followers"}</h3>
                 <div className="followingContainer">
                     {this.state.followinglist.length !== 0 ? this.renderFollowingList() : null}
                 </div>
