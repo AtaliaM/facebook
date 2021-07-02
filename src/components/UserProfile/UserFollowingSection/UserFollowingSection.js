@@ -77,7 +77,7 @@ class UserFollowingSection extends React.Component {
     render() {
         return (
             <div className="followingSectionContainer">
-                <h3 className="followingh2">{this.props.sectionType==="usersIFollow" ? "Users I follow" : "My Followers"}</h3>
+                <h3 className="followingh2">{this.props.sectionType==="usersIFollow" ? "Following" : "My Followers"}</h3>
                 <div className="followingContainer">
                     {this.state.followinglist.length !== 0 ? this.renderFollowingList() : null}
                 </div>
