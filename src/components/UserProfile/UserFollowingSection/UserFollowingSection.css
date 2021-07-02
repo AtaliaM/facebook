@@ -66,6 +66,14 @@ span[data-tooltip]:hover::after {
 @media only screen and (max-width: 768px) {
     .followingContainer {
         max-width: fit-content;
+        min-width: fit-content;
+        margin: auto;
+    }
+}
+@media only screen and (max-width: 1024px) {
+    .followingContainer {
+        width: 30%;
+        min-width: fit-content;
         margin: auto;
     }
 }
