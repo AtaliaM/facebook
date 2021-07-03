@@ -1,25 +1,53 @@
 import React from 'react';
 import './UserHeader.css';
-// import userImg from '../../../pictures/square-image.png'
+import facebookApi from '../../../apis/facebook-api';
+import Cookies from 'universal-cookie';
 import FollowButton from '../FollowButton/FollowButton';
 
-const UserHeader = (props) => {
+class UserHeader extends React.Component {
 
+    state = { avatarChosen: false, avatar: "" }
 
-    return (
-        <div className="header-container">
-            <div className="header">
-                <h1 className="user-name">{props.userName}</h1>
-                <div className="user-image">
-                    {props.myProfile ? <button className="circular ui icon button"><i className="fas fa-camera-retro"></i></button> : null}
+    onAvatarSubmit = async (e) => {
+        e.preventDefault();
+        console.log("in user avatar")
+        console.log(e.target[0].files[0])
+        const uploadedFile = e.target[0].files[0];
+        try {
+            const cookies = new Cookies();
+            const userToken = cookies.get('userToken');
+            const userAvatar = new FormData();
+            userAvatar.append("avatar",uploadedFile)
+            await facebookApi.post('/users/me/avatar', userAvatar, {
+                headers: { Authorization: "Bearer " + userToken }
+            });
+            window.location.reload();
+
+        } catch (e) {
+            console.log(e);
+        }
+
+    }
+
+    render() {
+        return (
+            <div className="header-container">
+                <div className="header">
+                    <h1 className="user-name">{this.props.userName}</h1>
+                    <div className="user-image">
+                    </div>
+                    {this.props.myProfile ?
+                        <form encType="multipart/form-data" method="post" onSubmit={(e) => this.onAvatarSubmit(e)}><input type="file" className="circular ui icon button" onChange={(e) => this.setState({ avatar: e.target.value, avatarChosen: true })} />
+                            <input type="submit" className={this.state.avatarChosen ? 'ui button' : 'hide'} /></form> : null}
+                    {this.props.myProfile ? <button className="ui button icon userHeaderBtn"><i className="fas fa-camera-retro"></i>Change header picture</button> :
+                        null
+                    }
+                    {this.props.myProfile ? null : <FollowButton userId={this.props.userId} userPath={this.props.userPath} />}
                 </div>
-                {props.myProfile ? <button className="ui button icon userHeaderBtn"><i className="fas fa-camera-retro"></i>Change header picture</button> :
-                    null
-                }
-        {props.myProfile ? null : <FollowButton  userId={props.userId} userPath={props.userPath}/>}
             </div>
-        </div>
-    )
+        )
+
+    }
 
 }
 
