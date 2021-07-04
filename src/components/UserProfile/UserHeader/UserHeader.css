@@ -75,7 +75,7 @@ i {
     margin: 0 5px;
 }
 
-.circular.ui.icon {
+.transparent {
     margin: auto;
     background: transparent;
 }
