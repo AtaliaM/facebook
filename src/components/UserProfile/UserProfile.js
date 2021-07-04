@@ -14,9 +14,9 @@ class UserProfile extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if(prevProps !== this.props) {
+        
+        if(prevProps !== this.props){
             window.location.reload();
-            console.log(window.location)
         }
     }
 
@@ -53,7 +53,7 @@ class UserProfile extends React.Component {
     render() {
         return (
             <div>
-                <UserNavBar />
+                <UserNavBar/>
                 <UserHeader myProfile={this.state.myProfile} userName={this.state.userName} userId={this.state.userId} userPath={this.state.userPath} />
                 <UserWall key={this.state.userId} myProfile={this.state.myProfile} userId={this.state.userId} />
             </div>

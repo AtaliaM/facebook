@@ -38,7 +38,7 @@ class DeleteUserPost extends React.Component {
                     <button className="ui button" onClick={() => this.openOrCloseForm()}>Delete</button>
                 </span>
 
-                <div div className={`ui bottom attached segment ${this.state.formOpened ? "show" : "hidden"}`}>
+                <div className={`ui bottom attached segment ${this.state.formOpened ? "show" : "hidden"}`}>
                         <span className="deleteMsg">Are you sure you want to delete this post?</span>
                         <button className="ui secondary button" onClick={this.deleteUserPost}>Yes</button>
                         <button className="ui button" onClick={() => this.openOrCloseForm()}>No</button>

@@ -33,6 +33,7 @@ class UserFollowingSection extends React.Component {
                 const path = window.location.pathname.slice(7);
                 const res = await facebookApi.get(`/users/${path}`);
                 const data = this.props.sectionType === "usersIFollow" ? [...res.data[0].usersIFollow] : [...res.data[0].myFollowers];
+                console.log(data)
                 for (let i = 0; i < data.length; i++) {
                     const currentFollowing = await this.fetchUsers(data, i);
                     followinglist.push(currentFollowing);

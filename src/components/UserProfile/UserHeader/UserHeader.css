@@ -78,6 +78,7 @@ i {
 
 .circular.ui.icon.button.transparent {
     margin: auto;
+    /* display: none; */
     background: transparent;
 }
 
@@ -88,6 +89,10 @@ i {
 
 .hide {
     visibility: hidden;
+}
+
+.edit-pic {
+    margin: auto;
 }
 
 
