@@ -14,7 +14,7 @@ class UserWall extends React.Component {
         if (this.props.userId) {
             try {
                 const res = await facebookApi.get(`/posts/user/${this.props.userId}`);
-                console.log(res)
+                // console.log(res)
                 if (res) {
                     this.setState({ userPosts: res.data.reverse() })
                 }

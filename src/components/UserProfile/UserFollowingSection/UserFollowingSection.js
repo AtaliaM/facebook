@@ -10,7 +10,7 @@ class UserFollowingSection extends React.Component {
     state = { followinglist: [] }
 
     async componentDidMount() {
-        console.log(this.props.sectionType)
+        // console.log(this.props.sectionType)
         const followinglist = [];
         if (window.location.pathname === "/myProfile") { //if the user is viewing his own profile
             const cookies = new Cookies();

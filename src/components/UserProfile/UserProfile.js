@@ -10,6 +10,17 @@ class UserProfile extends React.Component {
     state = { userToken: '', userName: '', myProfile: true, userId: '', userPath: '' }
 
     async componentDidMount() {
+        this.readProfile();
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if(prevProps !== this.props) {
+            window.location.reload();
+            console.log(window.location)
+        }
+    }
+
+    readProfile = async() => {
         if (window.location.pathname === "/myProfile") { //if the user is viewing his own profile
             try {
                 const cookies = new Cookies();
