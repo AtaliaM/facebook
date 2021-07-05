@@ -7,14 +7,18 @@ import Cookies from 'universal-cookie';
 class Logout extends React.Component {
 
     logout = async () => {
+        console.log('in logout')
         const cookies = new Cookies();
         const token = cookies.get('userToken');
+        console.log(token)
         try {
             await facebookApi.post('/users/logout',token, {
                 headers: { Authorization: "Bearer " + token }
             })
-            cookies.remove('userToken');
-            this.props.history.push("/");
+            cookies.remove('userToken', { path: '/users' });
+            cookies.remove('userToken', { path: '/' });
+            window.location.reload();
+            // this.props.history.push("/");
         } catch (e) {
             console.log(e);
         }

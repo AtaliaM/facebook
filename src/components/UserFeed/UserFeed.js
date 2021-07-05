@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './UserFeed.css';
 import UserNavBar from '../UserProfile/UserNavBar/UserNavBar';
 import facebookApi from '../../apis/facebook-api';
@@ -56,13 +57,12 @@ class UserFeed extends React.Component {
                 return (
                     <div className="ui card" key={post._id}>
                         <div className="content scroll">
-                            <h4><a href={`/users/${post.path}`} className="userLink"><i className="user icon"></i>{post.owner}</a></h4>
+                            <h4><Link to={`/users/${post.path}`} className="userLink"><i className="user icon"></i>{post.owner}</Link></h4>
                             {post.postHeader ? <h3 className="postHeader">{post.postHeader}</h3> : null}
                             <div className="postBody">
                                 <p className="postBody">{post.postBody}</p>
                             </div>
                         </div>
-                        
                         <div className="extra content">
                             <span className="left floated like">
                                 <i className="like icon"></i>
