@@ -1,29 +1,24 @@
-import http from './apis/facebook-api';
+import facebookApi from './apis/facebook-api';
+import Cookies from 'universal-cookie';
 
-const getAuthUser = (path, token) => {
-    return http.get(`/${path}`, {
-        headers: { Authorization: "Bearer " + token },
+const getAuthUser = (path) => {
+    const cookies = new Cookies();
+    const userToken = cookies.get('userToken');
+    return facebookApi.get(`${path}`, {
+        headers: { Authorization: "Bearer " + userToken },
     });
 };
 
-const postAuthUser = (path, token) => {
-    return http.post(`/${path}`, {
-        headers: { Authorization: "Bearer " + token },
+const postAuthUser = (path, object) => {
+    const cookies = new Cookies();
+    const userToken = cookies.get('userToken');
+    return facebookApi.post(`${path}`, object, {
+        headers: { Authorization: "Bearer " + userToken },
     });
 };
 
-
-// const patch = (id, data) => {
-//     return http.patch(`/${id}`, data);
-// };
-
-// const remove = (id) => {
-//     return http.delete(`/${id}`);
-// };
 
 export {
     getAuthUser,
-    // remove,
-    // patch,
     postAuthUser,
 }

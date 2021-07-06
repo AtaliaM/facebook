@@ -3,7 +3,7 @@ import './UserHeader.css';
 import facebookApi from '../../../apis/facebook-api';
 import Cookies from 'universal-cookie';
 import FollowButton from '../FollowButton/FollowButton';
-import defaultImg from '../../../pictures/square-image.png'
+import defaultImg from '../../../pictures/square-image.png';
 
 class UserHeader extends React.Component {
 

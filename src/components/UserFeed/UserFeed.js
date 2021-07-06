@@ -3,20 +3,22 @@ import {Link} from 'react-router-dom';
 import './UserFeed.css';
 import UserNavBar from '../UserProfile/UserNavBar/UserNavBar';
 import facebookApi from '../../apis/facebook-api';
-import Cookies from 'universal-cookie';
+// import Cookies from 'universal-cookie';
+import {getAuthUser} from '../../authPaths';
 
 class UserFeed extends React.Component {
 
     state = { myFollowing: [], posts: [] }
 
     async componentDidMount() {
-        const cookies = new Cookies();
-        const userToken = cookies.get('userToken');
+        // const cookies = new Cookies();
+        // const userToken = cookies.get('userToken');
         try {
-            const res = await facebookApi.get('/users/me', {
-                headers: { Authorization: "Bearer " + userToken }
-            });
-            console.log(res.data.usersIFollow)
+            // const res = await facebookApi.get('/users/me', {
+            //     headers: { Authorization: "Bearer " + userToken }
+            // });
+            const res = await getAuthUser('/users/me');
+            // console.log(res.data.usersIFollow)
             this.setState({ myFollowing: [...res.data.usersIFollow] })
             this.fetchPostsFromMyFollowing();
         } catch (e) {
@@ -25,7 +27,6 @@ class UserFeed extends React.Component {
     }
 
     fetchPostsFromMyFollowing = async () => {
-        console.log("innn")
         const myFollowing = this.state.myFollowing;
         const posts = [];
         for (let i = 0; i < myFollowing.length; i++) {
@@ -42,7 +43,7 @@ class UserFeed extends React.Component {
             const res2 = await facebookApi.get(`/users/id/${data[i].userId}`);
             const posts = res.data.map((post)=> {
                 return (
-                    {postBody: post.postBody, postHeader:post.postHeader, owner: `${res2.data.firstName} ${res2.data.lastName}`, path: res2.data.path}
+                    {_id: post._id, postBody: post.postBody, postHeader:post.postHeader, owner: `${res2.data.firstName} ${res2.data.lastName}`, path: res2.data.path}
                 )
             })
             return posts;
