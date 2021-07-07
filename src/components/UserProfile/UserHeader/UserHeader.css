@@ -91,9 +91,11 @@ i {
     visibility: hidden;
 }
 
-.edit-pic {
-    margin: auto;
-}
+/* .edit-pic {
+    position: relative;
+    left: 380px;
+    width: fit-content;
+} */
 
 
 

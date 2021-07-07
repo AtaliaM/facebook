@@ -7,7 +7,7 @@ const getCookie = (cookieName) => {
     return cookie;
 }
 
-const RegisterOrLoginUser = (method, reqBody) => {
+const registerOrLoginUser = (method, reqBody) => {
     if (method === "login") {
         return facebookApi.post("/users/login", reqBody)
     }
@@ -35,9 +35,9 @@ const patchAuthUser = (path, object) => {
     });
 };
 
-const editAuthPost = (postId, object) => {
+const editAuthPost = (postId, post) => {
     const userToken = getCookie('userToken');
-    return facebookApi.patch(`/posts/${postId}`, object, {
+    return facebookApi.patch(`/posts/${postId}`, post, {
         headers: { Authorization: "Bearer " + userToken }
     });
 }
@@ -49,12 +49,25 @@ const deleteAuthPost = (postId) => {
     });
 }
 
+const getUserAvatar = (userId) => {
+    return facebookApi.get(`/users/${userId}/avatar`);
+}
+
+const postUserAvatar = (avatar) => {
+    const userToken = getCookie('userToken');
+    return facebookApi.post('/users/me/avatar', avatar, {
+        headers: { Authorization: "Bearer " + userToken }
+    });
+}
+
 
 export {
-    RegisterOrLoginUser,
+    registerOrLoginUser,
     getAuthUser,
     postAuthUser,
     patchAuthUser,
     deleteAuthPost,
     editAuthPost,
+    getUserAvatar,
+    postUserAvatar,
 }

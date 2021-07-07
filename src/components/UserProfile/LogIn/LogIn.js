@@ -2,7 +2,7 @@ import React from 'react';
 import logo from '../../../pictures/logo2.png';
 import './Login.css';
 import Cookies from 'universal-cookie';
-import {RegisterOrLoginUser} from '../../../authPaths';
+import {registerOrLoginUser} from '../../../authPaths';
 
 class Login extends React.Component {
 
@@ -27,7 +27,7 @@ class Login extends React.Component {
 
         try {
             // const response = await facebookApi.post("/users/login", reqBody);
-            const response = await RegisterOrLoginUser("login", reqBody);
+            const response = await registerOrLoginUser("login", reqBody);
             const cookies = new Cookies();
             cookies.set('userToken', response.data.token);
             this.props.history.push('/myProfile');
@@ -47,7 +47,7 @@ class Login extends React.Component {
 
             try {
                 // const response = await facebookApi.post("/users", reqBody);
-                const response = await RegisterOrLoginUser("register", reqBody);
+                const response = await registerOrLoginUser("register", reqBody);
                 const cookies = new Cookies();
                 cookies.set('userToken', response.data.token);
                 this.props.history.push('/myProfile');
