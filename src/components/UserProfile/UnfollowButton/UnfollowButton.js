@@ -1,6 +1,5 @@
 import React from 'react';
-import Cookies from 'universal-cookie';
-import facebookApi from '../../../apis/facebook-api';
+import { patchAuthUser } from '../../../authPaths';
 import FollowButton from '../FollowButton/FollowButton';
 import '../FollowButton/FollowButton.css'
 
@@ -10,13 +9,9 @@ class UnfollowButton extends React.Component {
 
     onUnfollowUserClick = async () => {
         console.log(this.props)
-        const cookies = new Cookies();
-        const userToken = cookies.get('userToken');
         const userPath = { path: this.props.userPath };
         try {
-            const res = await facebookApi.patch('/users/me/unfollowUser', userPath, {
-                headers: { Authorization: "Bearer " + userToken }
-            });
+            const res = await patchAuthUser("/users/me/unfollowUser", userPath);
             console.log(res);
             this.setState({ followingUser: false })
         } catch (e) {
@@ -34,10 +29,7 @@ class UnfollowButton extends React.Component {
                 }
             </div>
         )
-
     }
-
 }
-
 
 export default UnfollowButton;
