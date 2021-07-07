@@ -1,10 +1,8 @@
 import React from 'react';
 import './UserHeader.css';
-import facebookApi from '../../../apis/facebook-api';
-import Cookies from 'universal-cookie';
 import FollowButton from '../FollowButton/FollowButton';
 import defaultImg from '../../../pictures/square-image.png';
-import {getUserAvatar, postUserAvatar} from '../../../authPaths';
+import {getUserAvatar, postUserAvatar, deleteUserAvatar} from '../../../authPaths';
 
 class UserHeader extends React.Component {
 
@@ -38,11 +36,7 @@ class UserHeader extends React.Component {
 
     onDeleteAvatar = async () => {
         try {
-            const cookies = new Cookies();
-            const userToken = cookies.get('userToken');
-            await facebookApi.delete('/users/me/avatar', {
-                headers: { Authorization: "Bearer " + userToken }
-            })
+            await deleteUserAvatar();
             window.location.reload();
         } catch (e) {
             console.log(e);

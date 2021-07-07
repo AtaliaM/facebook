@@ -61,6 +61,13 @@ const postUserAvatar = (avatar) => {
 }
 
 
+const deleteUserAvatar = () => {
+    const userToken = getCookie('userToken');
+    return facebookApi.delete('/users/me/avatar', {
+        headers: { Authorization: "Bearer " + userToken }
+    })
+}
+
 export {
     registerOrLoginUser,
     getAuthUser,
@@ -70,4 +77,5 @@ export {
     editAuthPost,
     getUserAvatar,
     postUserAvatar,
+    deleteUserAvatar,
 }
