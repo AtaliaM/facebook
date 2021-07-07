@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import { useHistory } from 'react-router-dom';
 import facebookApi from '../../apis/facebook-api';
 
 const SearchField = (props) => {
@@ -7,10 +6,7 @@ const SearchField = (props) => {
     const [term, setTerm] = useState("");
     const [debouncedTerm, setDebouncedTerm] = useState(term);
     const [autocompleteSuggestions, setAutocompleteSuggestions] = useState([]);
-    // const history = useHistory();
     
-    // const autoCompleteList = useRef([]);
-
     useEffect(() => {
         const timerId = setTimeout(() => {
             if (term !== "") {
@@ -53,7 +49,6 @@ const SearchField = (props) => {
         console.log(window.location.pathname)
         console.log(document.location)
         try {
-            // history.push({pathname: `users/${user[0].path}`});
             // window.location.replace(`users/${user[0].path}`)
             document.location.pathname = `users/${user[0].path}`;
         } catch(e) {
