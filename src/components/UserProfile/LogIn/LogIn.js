@@ -29,7 +29,7 @@ class Login extends React.Component {
             // const response = await facebookApi.post("/users/login", reqBody);
             const response = await registerOrLoginUser("login", reqBody);
             const cookies = new Cookies();
-            cookies.set('userToken', response.data.token);
+            cookies.set('userToken', response.data.token, {sameSite: "strict"});
             this.props.history.push('/myProfile');
         } catch (e) {
             console.log(e);
@@ -49,7 +49,7 @@ class Login extends React.Component {
                 // const response = await facebookApi.post("/users", reqBody);
                 const response = await registerOrLoginUser("register", reqBody);
                 const cookies = new Cookies();
-                cookies.set('userToken', response.data.token);
+                cookies.set('userToken', response.data.token, {sameSite: "strict"});
                 this.props.history.push('/myProfile');
             } catch (e) {
                 console.log(e);
