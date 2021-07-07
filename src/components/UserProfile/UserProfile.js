@@ -4,6 +4,7 @@ import UserHeader from './UserHeader/UserHeader';
 import UserWall from './UserWall/UserWall';
 import Cookies from 'universal-cookie';
 import facebookApi from '../../apis/facebook-api';
+import {getAuthUser} from '../../authPaths';
 
 class UserProfile extends React.Component {
 
@@ -25,9 +26,7 @@ class UserProfile extends React.Component {
             try {
                 const cookies = new Cookies();
                 const userToken = cookies.get('userToken');
-                const res = await facebookApi.get('/users/me', {
-                    headers: { Authorization: "Bearer " + userToken }
-                });
+                const res = await getAuthUser("/users/me");
 
                 this.setState({ userToken: userToken, userName: `${res.data.firstName} ${res.data.lastName}`, userId: `${res.data._id}` });
                 if (!userToken) {
@@ -49,7 +48,6 @@ class UserProfile extends React.Component {
         }
     }
 
-    //need to pass the user's details to the following components//
     render() {
         return (
             <div>
