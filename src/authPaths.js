@@ -23,7 +23,7 @@ const getAuthUser = (path) => {
 
 const postAuthUser = (path, object) => {
     const userToken = getCookie('userToken');
-    return facebookApi.post(`${path}`, object, {
+    return facebookApi.post(`${path}`, object || userToken, {
         headers: { Authorization: "Bearer " + userToken },
     });
 };

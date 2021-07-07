@@ -1,20 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Logout.css';
-import facebookApi from '../../../apis/facebook-api';
+import { postAuthUser } from '../../../authPaths';
 import Cookies from 'universal-cookie';
 
 class Logout extends React.Component {
 
     logout = async () => {
-        console.log('in logout')
         const cookies = new Cookies();
-        const token = cookies.get('userToken');
-        console.log(token)
         try {
-            await facebookApi.post('/users/logout',token, {
-                headers: { Authorization: "Bearer " + token }
-            })
+            await postAuthUser("/users/logout");
             cookies.remove('userToken', { path: '/users' });
             cookies.remove('userToken', { path: '/' });
             window.location.reload();
@@ -33,7 +28,6 @@ class Logout extends React.Component {
             </div>
         )
     }
-
 }
 
 export default Logout;
