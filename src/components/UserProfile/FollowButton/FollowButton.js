@@ -1,7 +1,6 @@
 import React from 'react';
-import Cookies from 'universal-cookie';
-import facebookApi from '../../../apis/facebook-api';
 import UnfollowButton from '../UnfollowButton/UnfollowButton';
+import { getAuthUser, patchAuthUser } from '../../../authPaths';
 import './FollowButton.css'
 
 class FollowButton extends React.Component {
@@ -11,11 +10,7 @@ class FollowButton extends React.Component {
     async componentDidMount() {
         //check if current logged in user is already following this user//
         const id = this.props.userId;
-        const cookies = new Cookies();
-        const userToken = cookies.get('userToken');
-        const res = await facebookApi.get('/users/me', {
-            headers: { Authorization: "Bearer " + userToken }
-        });
+        const res = await getAuthUser("/users/me");
         console.log(this.props)
         const result = res.data.usersIFollow.filter(function(userId) {
             return userId.userId === id;
@@ -26,19 +21,14 @@ class FollowButton extends React.Component {
     }
 
     onFollowUserClick = async() => {
-        const cookies = new Cookies();
-        const userToken = cookies.get('userToken');
         const userPath = {path: this.props.userPath}
         try {
-            const res = await facebookApi.patch('/users/me/followUser', userPath, {
-                headers: { Authorization: "Bearer " + userToken }
-            });
+            const res = await patchAuthUser("/users/me/followUser", userPath);
             console.log(res);
             this.setState({followingUser:true})
         } catch(e) {
             console.log(e)
         }
-
     }
 
     render() {
@@ -50,9 +40,7 @@ class FollowButton extends React.Component {
             }
             </div>
         )
-
     }
-
 }
 
 

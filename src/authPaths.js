@@ -24,6 +24,14 @@ const postAuthUser = (path, object) => {
     });
 };
 
+const patchAuthUser = (path, object) => {
+    const cookies = new Cookies();
+    const userToken = cookies.get('userToken');
+    return facebookApi.patch(`${path}`, object, {
+        headers: { Authorization: "Bearer " + userToken },
+    });
+};
+
 const editAuthPost = (postId, object) => {
     const cookies = new Cookies();
     const userToken = cookies.get('userToken');
@@ -45,6 +53,7 @@ export {
     RegisterOrLoginUser,
     getAuthUser,
     postAuthUser,
+    patchAuthUser,
     deleteAuthPost,
     editAuthPost,
 }
