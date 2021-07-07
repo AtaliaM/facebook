@@ -1,8 +1,6 @@
 import React from 'react';
 import './AddUserPost.css';
-import facebookApi from '../../../apis/facebook-api';
-import Cookies from 'universal-cookie';
-
+import {postAuthUser} from '../../../authPaths';
 
 class AddUserPost extends React.Component {
     //user's new post//
@@ -18,12 +16,8 @@ class AddUserPost extends React.Component {
     uploadPost = async(event) => {
         event.preventDefault();
         const post = {postBody: this.state.userPostBody, postHeader: this.state.userPostHeader};
-        const cookies = new Cookies();
-        const userToken = cookies.get('userToken');
         try {
-            await facebookApi.post('/posts', post, {
-                headers: { Authorization: "Bearer " + userToken }
-            })
+            await postAuthUser("/posts", post);
             this.openOrCloseForm();
             window.location.reload();
             // this.props.history.push("/myProfile");
@@ -49,7 +43,6 @@ class AddUserPost extends React.Component {
                         <button type="button" className="btn cancel" onClick={() =>this.openOrCloseForm()}>Close</button>
                     </form>
                 </div>
-    
             </div>
         )
     }
