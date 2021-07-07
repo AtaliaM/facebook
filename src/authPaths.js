@@ -3,8 +3,8 @@ import Cookies from 'universal-cookie';
 
 const getCookie = (cookieName) => {
     const cookies = new Cookies();
-    const userToken = cookies.get(cookieName);
-    return userToken;
+    const cookie = cookies.get(cookieName);
+    return cookie;
 }
 
 const RegisterOrLoginUser = (method, reqBody) => {
