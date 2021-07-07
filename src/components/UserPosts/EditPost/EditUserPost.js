@@ -1,7 +1,6 @@
 import React from 'react';
-import facebookApi from '../../../apis/facebook-api';
-import Cookies from 'universal-cookie';
 import './EditUserPost.css';
+import {editAuthPost} from '../../../authPaths';
 
 class EditUserPost extends React.Component {
 
@@ -16,14 +15,9 @@ class EditUserPost extends React.Component {
 
     editUserPost = async (event) => {
         event.preventDefault();
-        const cookies = new Cookies();
-        const userToken = cookies.get('userToken');
         const editedPost = {postBody: this.state.editedPostBody, postHeader: this.state.editedPostHeader}
         try {
-            await facebookApi.patch(`/posts/${this.props.postId}`, editedPost, {
-                headers: { Authorization: "Bearer " + userToken }
-            });
-    
+            await editAuthPost(this.props.postId, editedPost);
             window.location.reload();
         } catch(e) {
             console.log(e)
@@ -47,7 +41,6 @@ class EditUserPost extends React.Component {
                         <button type="button" className="btn cancel" onClick={() =>this.openOrCloseForm()}>Close</button>
                     </form>
                 </div>
-
             </div>
         )
     }

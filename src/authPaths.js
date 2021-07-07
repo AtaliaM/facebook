@@ -2,7 +2,7 @@ import facebookApi from './apis/facebook-api';
 import Cookies from 'universal-cookie';
 
 const RegisterOrLoginUser = (method, reqBody) => {
-    if (method==="login") {
+    if (method === "login") {
         return facebookApi.post("/users/login", reqBody)
     }
     return facebookApi.post("/users", reqBody)
@@ -24,6 +24,14 @@ const postAuthUser = (path, object) => {
     });
 };
 
+const editAuthPost = (postId, object) => {
+    const cookies = new Cookies();
+    const userToken = cookies.get('userToken');
+    return facebookApi.patch(`/posts/${postId}`, object, {
+        headers: { Authorization: "Bearer " + userToken }
+    });
+}
+
 const deleteAuthPost = (postId) => {
     const cookies = new Cookies();
     const userToken = cookies.get('userToken');
@@ -38,4 +46,5 @@ export {
     getAuthUser,
     postAuthUser,
     deleteAuthPost,
+    editAuthPost,
 }
