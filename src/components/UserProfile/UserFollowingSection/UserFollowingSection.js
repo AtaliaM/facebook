@@ -2,8 +2,8 @@
 import React from 'react';
 import './UserFollowingSection.css';
 import facebookApi from '../../../apis/facebook-api';
-import Cookies from 'universal-cookie';
 import tempPhoto from '../../../pictures/icon2.png';
+import {getAuthUser} from '../../../authPaths';
 
 class UserFollowingSection extends React.Component {
 
@@ -13,12 +13,8 @@ class UserFollowingSection extends React.Component {
         // console.log(this.props.sectionType)
         const followinglist = [];
         if (window.location.pathname === "/myProfile") { //if the user is viewing his own profile
-            const cookies = new Cookies();
-            const userToken = cookies.get('userToken');
             try {
-                const res = await facebookApi.get('/users/me', {
-                    headers: { Authorization: "Bearer " + userToken }
-                });
+                const res = await getAuthUser("/users/me");
                 const data = this.props.sectionType === "usersIFollow" ? [...res.data.usersIFollow] : [...res.data.myFollowers];
                 for (let i = 0; i < data.length; i++) {
                     const currentFollowing = await this.fetchUsers(data, i);
@@ -33,7 +29,6 @@ class UserFollowingSection extends React.Component {
                 const path = window.location.pathname.slice(7);
                 const res = await facebookApi.get(`/users/${path}`);
                 const data = this.props.sectionType === "usersIFollow" ? [...res.data[0].usersIFollow] : [...res.data[0].myFollowers];
-                console.log(data)
                 for (let i = 0; i < data.length; i++) {
                     const currentFollowing = await this.fetchUsers(data, i);
                     followinglist.push(currentFollowing);
