@@ -1,8 +1,8 @@
 import React from 'react';
 import logo from '../../../pictures/logo2.png';
 import './Login.css';
-import facebookApi from '../../../apis/facebook-api';
 import Cookies from 'universal-cookie';
+import {RegisterOrLoginUser} from '../../../authPaths';
 
 class Login extends React.Component {
 
@@ -26,8 +26,8 @@ class Login extends React.Component {
         const reqBody = { email: this.state.email, password: this.state.password };
 
         try {
-            const response = await facebookApi.post("/users/login", reqBody);
-            //setting new token cookie for the user who just logged in//
+            // const response = await facebookApi.post("/users/login", reqBody);
+            const response = await RegisterOrLoginUser("login", reqBody);
             const cookies = new Cookies();
             cookies.set('userToken', response.data.token);
             this.props.history.push('/myProfile');
@@ -46,8 +46,8 @@ class Login extends React.Component {
             email: this.state.email, password: this.state.password };
 
             try {
-                const response = await facebookApi.post("/users", reqBody);
-                //setting new token cookie for the user who just registered//
+                // const response = await facebookApi.post("/users", reqBody);
+                const response = await RegisterOrLoginUser("register", reqBody);
                 const cookies = new Cookies();
                 cookies.set('userToken', response.data.token);
                 this.props.history.push('/myProfile');
@@ -56,6 +56,10 @@ class Login extends React.Component {
                 this.onSubmitBtnPushed();
                 alert("Inputs are invalid");
             }
+    }
+
+    jokePopup = () => {
+        alert("One day you'll be able to get a 'reset password' email when you click this! What a time to be alive!");
     }
 
     render() {
@@ -76,7 +80,7 @@ class Login extends React.Component {
                         <div>
                             <button type="submit" className="btn logInBtn" >Submit</button>
                         </div>
-                        <a href="/">Forgot Password?</a>
+                        <a href="/" onClick={this.jokePopup}>Forgot Password?</a>
                         <br></br>
                         <div>
                             <input className="btn newAccountBtn" defaultValue="Create New Account" onClick={() => this.openOrCloseForm()} />
@@ -92,7 +96,7 @@ class Login extends React.Component {
                         <input type="text" placeholder="last name" name="lname" required onChange={(e) => this.setState({ lname: e.target.value })} />
 
                         <input type="email" placeholder="email" name="email" required onChange={(e) => this.setState({ email: e.target.value })} />
-                        <input type="password" placeholder="New Password" name="psw" minLength="7" required onChange={(e) => this.setState({ password: e.target.value })} />
+                        <input type="password" placeholder="new password" name="psw" minLength="7" required onChange={(e) => this.setState({ password: e.target.value })} />
 
                         <button type="submit" className="btn">Sign Up</button>
                         <button type="button" className="btn cancel" onClick={() => this.openOrCloseForm()}>Close</button>
