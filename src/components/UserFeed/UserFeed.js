@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 import './UserFeed.css';
 import UserNavBar from '../UserProfile/UserNavBar/UserNavBar';
 import facebookApi from '../../apis/facebook-api';
-// import Cookies from 'universal-cookie';
 import {getAuthUser} from '../../authPaths';
 
 class UserFeed extends React.Component {
@@ -11,12 +10,7 @@ class UserFeed extends React.Component {
     state = { myFollowing: [], posts: [] }
 
     async componentDidMount() {
-        // const cookies = new Cookies();
-        // const userToken = cookies.get('userToken');
         try {
-            // const res = await facebookApi.get('/users/me', {
-            //     headers: { Authorization: "Bearer " + userToken }
-            // });
             const res = await getAuthUser('/users/me');
             // console.log(res.data.usersIFollow)
             this.setState({ myFollowing: [...res.data.usersIFollow] })
