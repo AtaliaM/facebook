@@ -1,14 +1,12 @@
 import React from 'react';
-import facebookApi from '../../../apis/facebook-api';
-import Cookies from 'universal-cookie';
 import './DeleteUserPost.css';
+import {deleteAuthPost} from '../../../authPaths';
 
 class DeleteUserPost extends React.Component {
 
     state = { formOpened: false };
 
     openOrCloseForm = () => {
-        console.log("inn")
         this.setState(prevState => ({
             formOpened: !prevState.formOpened
         }));
@@ -16,14 +14,8 @@ class DeleteUserPost extends React.Component {
 
     deleteUserPost = async (event) => {
         event.preventDefault();
-        const cookies = new Cookies();
-        const userToken = cookies.get('userToken');
-        console.log(userToken);
         try {
-            await facebookApi.delete(`/posts/${this.props.postId}`, {
-                headers: { Authorization: "Bearer " + userToken }
-            });
-
+            await deleteAuthPost(this.props.postId);
             window.location.reload();
         } catch (e) {
             console.log(e)
@@ -43,8 +35,6 @@ class DeleteUserPost extends React.Component {
                         <button className="ui secondary button" onClick={this.deleteUserPost}>Yes</button>
                         <button className="ui button" onClick={() => this.openOrCloseForm()}>No</button>
                 </div>
-
-
             </div>
         )
     }
