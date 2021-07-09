@@ -49,21 +49,21 @@ const deleteAuthPost = (postId) => {
     });
 }
 
-const getUserAvatar = (userId) => {
-    return facebookApi.get(`/users/${userId}/avatar`);
+const getUserFile = (userId,fileType) => {
+    return facebookApi.get(`/users/${userId}/${fileType}`);
 }
 
-const postUserAvatar = (avatar) => {
+const postUserFile = (fileToPost, fileType) => {
     const userToken = getCookie('userToken');
-    return facebookApi.post('/users/me/avatar', avatar, {
+    return facebookApi.post(`/users/me/${fileType}`, fileToPost, {
         headers: { Authorization: "Bearer " + userToken }
     });
 }
 
 
-const deleteUserAvatar = () => {
+const deleteUserFile = (fileType) => {
     const userToken = getCookie('userToken');
-    return facebookApi.delete('/users/me/avatar', {
+    return facebookApi.delete(`/users/me/${fileType}`, {
         headers: { Authorization: "Bearer " + userToken }
     })
 }
@@ -75,7 +75,7 @@ export {
     patchAuthUser,
     deleteAuthPost,
     editAuthPost,
-    getUserAvatar,
-    postUserAvatar,
-    deleteUserAvatar,
+    getUserFile,
+    postUserFile,
+    deleteUserFile,
 }
