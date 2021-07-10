@@ -49,9 +49,6 @@ class UserHeader extends React.Component {
                 <div className="header">
                     <h1 className="user-name">{this.props.userName}</h1>
                     <img className="user-image" src={this.state.imageSrc} alt="userImg" />
-                    {/* <label htmlFor="profilePic" className="ui button icon edit-pic">
-                                    <i className="camera icon"></i>
-                            </label> */}
                     {this.props.myProfile ?
                         <form encType="multipart/form-data" method="post" onSubmit={(e) => this.onAvatarSubmit(e)}>
                             <input id="profilePic" type="file" className="circular ui icon button transparent" onChange={(e) => this.setState({ avatar: e.target.value, avatarChosen: true })} />
